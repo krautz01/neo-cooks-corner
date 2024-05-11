@@ -1,0 +1,16 @@
+@import "../../scss/App.scss";
+.navbar {
+  width: 6rem;
+  background: $Input-background;
+  .navbar_links {
+    height: 94%;
+    display: flex;
+    flex-direction: column;
+    gap: 66%;
+    .navbar_links_top {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+  }
+}

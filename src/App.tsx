@@ -10,6 +10,7 @@ import SearchPage from "./pages/SearchPage/SearchPage";
 import AuthorPage from "./pages/AuthorPage/AuthorPage";
 import UserProfilePage from "./pages/UserProfilePage/UserProfilePage";
 import GreetingPage from "./pages/GreetingPage/GreetingPage";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   /* const isAuth = useAppSelector((state) => state.auth.isAuth);
@@ -18,14 +19,19 @@ function App() {
   return (
     <>
       {isAuth ? (
-        <Routes>
-          <Route path={"/"} element={<HomePage />} />
-          <Route path={"/not-found"} element={<NotFoundPage />} />
-          <Route path={"/recipe-detail"} element={<DetailRecipePage />} />
-          <Route path={"/recipe-author"} element={<AuthorPage />} />
-          <Route path={"/recipe-search"} element={<SearchPage />} />
-          <Route path={"/user-profile"} element={<UserProfilePage />} />
-        </Routes>
+        <div className="nav_and_pag">
+          <Navbar />
+          <div>
+            <Routes>
+              <Route path={"/"} element={<HomePage />} />
+              <Route path={"/not-found"} element={<NotFoundPage />} />
+              <Route path={"/recipe-detail"} element={<DetailRecipePage />} />
+              <Route path={"/recipe-author"} element={<AuthorPage />} />
+              <Route path={"/recipe-search"} element={<SearchPage />} />
+              <Route path={"/user-profile"} element={<UserProfilePage />} />
+            </Routes>
+          </div>
+        </div>
       ) : (
         <Routes>
           <Route path={"/"} element={<GreetingPage />} />
