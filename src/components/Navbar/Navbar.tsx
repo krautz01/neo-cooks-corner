@@ -4,9 +4,19 @@ import home_link from "../../assets/icons/home_link.svg";
 import search_link from "../../assets/icons/search_link.svg";
 import profile_link from "../../assets/icons/profile_link.svg";
 import logout_link from "../../assets/icons/logout_link.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { logout } from "../../redux/reducers/userSlice";
+import { useDispatch } from "react-redux";
 
 export default function Navbar() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleLogOut = () => {
+    dispatch(logout());
+    navigate("/");
+  };
+
   return (
     <div className={s.navbar}>
       <Link to={"/"}>
@@ -24,9 +34,9 @@ export default function Navbar() {
             <img src={profile_link} alt="" />
           </Link>
         </div>
-        <Link to={"/login"}>
-          <img src={logout_link} alt="" />
-        </Link>
+        <button onClick={() => handleLogOut} >
+          <img src={logout_link} alt="logout_link" />
+        </button>
       </div>
     </div>
   );

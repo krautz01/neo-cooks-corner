@@ -13,23 +13,21 @@ import GreetingPage from "./pages/GreetingPage/GreetingPage";
 import Navbar from "./components/Navbar/Navbar";
 
 function App() {
-  const isAuth = useAppSelector((state) => state.auth.isAuth);
-  console.log(isAuth)
+  /* const isAuth = useAppSelector((state) => state.auth.isAuth); */
+  const isAuth = true;
   return (
     <>
       {isAuth ? (
         <div className="nav_and_pag">
           <Navbar />
-          <div>
-            <Routes>
-              <Route path={"/"} element={<HomePage />} />
-              <Route path={"/not-found"} element={<NotFoundPage />} />
-              <Route path={"/recipe-detail"} element={<DetailRecipePage />} />
-              <Route path={"/recipe-author"} element={<AuthorPage />} />
-              <Route path={"/recipe-search"} element={<SearchPage />} />
-              <Route path={"/user-profile"} element={<UserProfilePage />} />
-            </Routes>
-          </div>
+          <Routes>
+            <Route path={"/"} element={<HomePage />} />
+            <Route path={"/not-found"} element={<NotFoundPage />} />
+            <Route path={"/recipe-detail"} element={<DetailRecipePage />} />
+            <Route path={"/recipe-author"} element={<AuthorPage />} />
+            <Route path={"/recipe-search"} element={<SearchPage />} />
+            <Route path={"/user-profile"} element={<UserProfilePage />} />
+          </Routes>
         </div>
       ) : (
         <Routes>

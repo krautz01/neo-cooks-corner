@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import s from "./RegisterPage.module.scss";
-import { Button } from "../../components/Button/Button";
-import { Input } from "../../components/Input/Input";
+import { Button } from "../../ui/Button/Button";
+import { Input } from "../../ui/Input/Input";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
