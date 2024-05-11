@@ -37,6 +37,7 @@ export default function RegisterPage() {
 
   const onSubmit = (data: IFormValues) => {
     console.log(data);
+   
     // Отправка данных на сервер или выполнение других действий после отправки формы
   };
 
@@ -53,17 +54,17 @@ export default function RegisterPage() {
           <div className={s.input_block}>
             <label htmlFor="username">Name</label>
             <Input type="text" id="username" {...register("username")} />
-            <p>{errors.username?.message}</p>
+            <p className={s.valid_error}>{errors.username?.message}</p>
           </div>
           <div className={s.input_block}>
             <label htmlFor="email">Gmail</label>
             <Input type="email" id="email" {...register("email")} />
-            <p>{errors.email?.message}</p>
+            <p className={s.valid_error}>{errors.email?.message}</p>
           </div>
           <div className={s.input_block}>
             <label htmlFor="password">Password</label>
             <Input type="password" id="password" {...register("password")} />
-            <p>{errors.password?.message}</p>
+            <p className={s.valid_error}>{errors.password?.message}</p>
           </div>
           <div className={s.input_block}>
             <label htmlFor="password">Re-Password</label>
@@ -72,7 +73,7 @@ export default function RegisterPage() {
               id="confirmPassword"
               {...register("confirmPassword")}
             />
-            <p>{errors.confirmPassword?.message}</p>
+            <p className={s.valid_error}>{errors.confirmPassword?.message}</p>
           </div>
           <Button type="submit">Sign In</Button>
         </form>
