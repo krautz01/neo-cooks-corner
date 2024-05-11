@@ -13,9 +13,9 @@ import GreetingPage from "./pages/GreetingPage/GreetingPage";
 import Navbar from "./components/Navbar/Navbar";
 
 function App() {
-  /* const isAuth = useAppSelector((state) => state.auth.isAuth);
-  console.log(isAuth) */
-  const isAuth = true;
+  const isAuth = useAppSelector((state) => state.auth.isAuth);
+  console.log(isAuth)
+  /* const isAuth = true; */
   return (
     <>
       {isAuth ? (
