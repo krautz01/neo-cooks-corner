@@ -15,7 +15,6 @@ import Navbar from "./components/Navbar/Navbar";
 function App() {
   const isAuth = useAppSelector((state) => state.auth.isAuth);
   console.log(isAuth)
-  /* const isAuth = true; */
   return (
     <>
       {isAuth ? (

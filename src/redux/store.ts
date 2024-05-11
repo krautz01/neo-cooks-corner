@@ -1,8 +1,10 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import userSlice from "./reducers/userSlice";
+import recipeSlice from "./reducers/recipeSlice";
 
 const rootReducer = combineReducers({
   auth: userSlice,
+  recipe: recipeSlice,
 });
 
 export const store = configureStore({
@@ -10,5 +12,4 @@ export const store = configureStore({
 });
 
 export type RootState = ReturnType<typeof store.getState>;
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch;
