@@ -5,8 +5,13 @@ import { Input } from "../../components/Input/Input";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/reducers/userDataSlice";
+import { useAppSelector } from "../../redux/hooks";
 
 export default function LoginPage() {
+  const dispatch = useDispatch();
+
   interface IFormValues {
     email: string;
     password: string;
@@ -27,9 +32,11 @@ export default function LoginPage() {
   } = useForm<IFormValues>({
     resolver: yupResolver(schema),
   });
-
+  const isAuth = useAppSelector((state) => state.auth.isAuth);
   const onSubmit = (data: IFormValues) => {
     console.log(data);
+    console.log(isAuth);
+    dispatch(login());
     // Отправка данных на сервер или выполнение других действий после отправки формы
   };
   return (
@@ -52,6 +59,7 @@ export default function LoginPage() {
             <Input type="password" id="password" {...register("password")} />
             <p className={s.valid_error}>{errors.password?.message}</p>
           </div>
+
           <Button type="submit">Sign In</Button>
         </form>
         <div className={s.link_to_register}>

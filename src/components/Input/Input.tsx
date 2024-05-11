@@ -15,4 +15,5 @@ export const Input = styled.input<IInputProps>`
   border-radius: 1.75rem;
   border: none;
   background: #ededed;
+  font-size: 1rem;
 `;

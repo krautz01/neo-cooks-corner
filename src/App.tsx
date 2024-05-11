@@ -12,13 +12,14 @@ import UserProfilePage from "./pages/UserProfilePage/UserProfilePage";
 import GreetingPage from "./pages/GreetingPage/GreetingPage";
 
 function App() {
-  /* const isAuth = useAppSelector((state) => state.user.isAuth); */
-  const isAuth = false;
+  /* const isAuth = useAppSelector((state) => state.auth.isAuth);
+  console.log(isAuth) */
+  const isAuth = true;
   return (
     <>
       {isAuth ? (
         <Routes>
-          <Route path={"/home"} element={<HomePage />} />
+          <Route path={"/"} element={<HomePage />} />
           <Route path={"/not-found"} element={<NotFoundPage />} />
           <Route path={"/recipe-detail"} element={<DetailRecipePage />} />
           <Route path={"/recipe-author"} element={<AuthorPage />} />

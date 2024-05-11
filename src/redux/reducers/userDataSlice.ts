@@ -1,35 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
-/* import type { PayloadAction } from "@reduxjs/toolkit"; */
+import type { PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "./../store";
 
-// Define a type for the slice state
 interface IUserDataState {
   isAuth: boolean;
-  email: string;
-  username: string;
+  accessToken: string;
+  refreshToken: string;
 }
 
-// Define the initial state using that type
 const initialState: IUserDataState = {
   isAuth: false,
-  email: "",
-  username: "",
+  accessToken: "",
+  refreshToken: "",
 };
 
 export const userDataSlice = createSlice({
-  name: "user",
-  // `createSlice` will infer the state type from the `initialState` argument
+  name: "userIsAuth",
   initialState,
   reducers: {
-    auth: (state) => {
+    login: (state) => {
       state.isAuth = true;
+    },
+    logout: (state) => {
+      state.isAuth = false;
     },
   },
 });
 
-export const { auth } = userDataSlice.actions;
-
-// Other code such as selectors can use the imported `RootState` type
-export const selectCount = (state: RootState) => state.counter.value;
-
+export const { login, logout } = userDataSlice.actions;
 export default userDataSlice.reducer;
