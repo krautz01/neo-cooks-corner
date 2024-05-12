@@ -1,0 +1,28 @@
+@import "../../scss/App.scss";
+.navbar {
+  width: 6rem;
+  background: $Input-background;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ 
+  .cooks_corner_link{
+    height: 98px;
+    width: 76px;
+    border-bottom: 1px solid $Text-faded;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .navbar_links {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .navbar_links_top {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+  }
+}

@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import { useAppSelector } from "./redux/hooks";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import HomePage from "./pages/HomePage/HomePage";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import DetailRecipePage from "./pages/DetailRecipePage/DetailRecipePage";
+import SearchPage from "./pages/SearchPage/SearchPage";
+import AuthorPage from "./pages/AuthorPage/AuthorPage";
+import UserProfilePage from "./pages/UserProfilePage/UserProfilePage";
+import GreetingPage from "./pages/GreetingPage/GreetingPage";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const isAuth = useAppSelector((state) => state.auth.isAuth);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {isAuth ? (
+        <>
+          <Navbar />
+          <Routes>
+            <Route path={"/"} element={<HomePage />} />
+            <Route path={"/not-found"} element={<NotFoundPage />} />
+            <Route path={"/recipe-detail"} element={<DetailRecipePage />} />
+            <Route path={"/recipe-author"} element={<AuthorPage />} />
+            <Route path={"/recipe-search"} element={<SearchPage />} />
+            <Route path={"/user-profile"} element={<UserProfilePage />} />
+          </Routes>
+        </>
+      ) : (
+        <Routes>
+          <Route path={"/"} element={<GreetingPage />} />
+          <Route path={"/login"} element={<LoginPage />} />
+          <Route path={"/register"} element={<RegisterPage />} />
+        </Routes>
+      )}
     </>
-  )
+  );
 }
 
-export default App
+export default App;

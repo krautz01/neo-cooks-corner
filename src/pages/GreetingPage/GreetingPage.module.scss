@@ -1,0 +1,33 @@
+.greeting_page {
+  background: #fa9e31;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24.3rem 0 4.5rem  0;
+
+  :nth-child(1) {
+    width: 15.3rem;
+    height: 15.3rem;
+
+    img {
+      margin-bottom: 2rem;
+      width: 11.3rem;
+      height: 11.3rem;
+    }
+
+    :nth-child(2) {
+      font-size: 36px;
+      font-weight: 500;
+      color: #ffffff;
+    }
+  }
+
+  :nth-child(2) {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+  }
+}

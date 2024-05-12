@@ -1,0 +1,154 @@
+[
+  {
+    "photo": "https://www.example.com/spaghetti_carbonara.jpg",
+    "title": "Spaghetti Carbonara",
+    "likes": 256,
+    "category": "dinner",
+    "author": "ChefDante",
+    "savedCount": 243
+  },
+  {
+    "photo": "https://www.example.com/steak_with_baked_potatoes.jpg",
+    "title": "Steak with Baked Potatoes",
+    "likes": 123,
+    "category": "dinner",
+    "author": "GrillMaster87",
+    "savedCount": 167
+  },
+  {
+    "photo": "https://www.example.com/vegetable_omelette.jpg",
+    "title": "Vegetable Omelette",
+    "likes": 345,
+    "category": "breakfast",
+    "author": "HealthGuru",
+    "savedCount": 325
+  },
+  {
+    "photo": "https://www.example.com/orange_juice.jpg",
+    "title": "Fresh Orange Juice",
+    "likes": 112,
+    "category": "breakfast",
+    "author": "JuiceLover123",
+    "savedCount": 91
+  },
+  {
+    "photo": "https://www.example.com/chicken_and_avocado_salad.jpg",
+    "title": "Chicken and Avocado Salad",
+    "likes": 98,
+    "category": "lunch",
+    "author": "SaladQueen",
+    "savedCount": 345
+  },
+  {
+    "photo": "https://www.example.com/greek_salad.jpg",
+    "title": "Greek Salad",
+    "likes": 312,
+    "category": "lunch",
+    "author": "HealthGuru",
+    "savedCount": 94
+  },
+  {
+    "photo": "https://www.example.com/pizza.jpg",
+    "title": "Margherita Pizza",
+    "likes": 431,
+    "category": "dinner",
+    "author": "ChefDante",
+    "savedCount": 336
+  },
+  {
+    "photo": "https://www.example.com/burger.jpg",
+    "title": "Classic Cheeseburger",
+    "likes": 289,
+    "category": "lunch",
+    "author": "BurgerKing99",
+    "savedCount": 283
+  },
+  {
+    "photo": "https://www.example.com/pasta_alfredo.jpg",
+    "title": "Fettuccine Alfredo",
+    "likes": 178,
+    "category": "dinner",
+    "author": "PastaLover123",
+    "savedCount": 102
+  },
+  {
+    "photo": "https://www.example.com/pancakes.jpg",
+    "title": "Blueberry Pancakes",
+    "likes": 203,
+    "category": "breakfast",
+    "author": "BreakfastBaker",
+    "savedCount": 284
+  },
+  {
+    "photo": "https://www.example.com/salmon.jpg",
+    "title": "Grilled Salmon",
+    "likes": 375,
+    "category": "dinner",
+    "author": "SeafoodChef",
+    "savedCount": 372
+  },
+  {
+    "photo": "https://www.example.com/sandwich.jpg",
+    "title": "Club Sandwich",
+    "likes": 264,
+    "category": "lunch",
+    "author": "SandwichGuru",
+    "savedCount": 347
+  },
+  {
+    "photo": "https://www.example.com/omelette.jpg",
+    "title": "Mushroom Omelette",
+    "likes": 141,
+    "category": "breakfast",
+    "author": "OmeletteMaster",
+    "savedCount": 71
+  },
+  {
+    "photo": "https://www.example.com/pasta_primavera.jpg",
+    "title": "Pasta Primavera",
+    "likes": 187,
+    "category": "dinner",
+    "author": "ChefDante",
+    "savedCount": 384
+  },
+  {
+    "photo": "https://www.example.com/french_toast.jpg",
+    "title": "French Toast",
+    "likes": 225,
+    "category": "breakfast",
+    "author": "BreakfastBaker",
+    "savedCount": 291
+  },
+  {
+    "photo": "https://www.example.com/sushi.jpg",
+    "title": "Sushi Platter",
+    "likes": 493,
+    "category": "lunch",
+    "author": "SushiSensation",
+    "savedCount": 313
+  },
+  {
+    "photo": "https://www.example.com/chicken_noodle_soup.jpg",
+    "title": "Chicken Noodle Soup",
+    "likes": 132,
+    "category": "lunch",
+    "author": "SoupMasterChef",
+    "savedCount": 132
+  },
+  {
+    "photo": "https://www.example.com/grilled_cheese.jpg",
+    "title": "Grilled Cheese Sandwich",
+    "likes": 318,
+    "category": "lunch",
+    "author": "CheeseLover88",
+    "savedCount": 176
+  },
+  {
+    "photo": "https://www.example.com/fruit_salad.jpg",
+    "title": "Fresh Fruit Salad",
+    "likes": 285,
+    "category": "breakfast",
+    "author": "FruitFanatic",
+    "savedCount": 375
+  }
+]
