@@ -1,30 +1,31 @@
 import { useEffect, useState } from "react";
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import s from "./HomePage.module.scss";
-/* import { useDispatch } from "react-redux"; */
-import apiData from "../../utils/apiData.json";
-
-interface IRecipe {
-  photo: string;
-  title: string;
-  likes: number;
-  category: string;
-  author: string;
-  savedCount: number;
-}
+import { useDispatch, useSelector } from "react-redux";
+import { fetchRecipes } from "../../redux/reducers/recipeSlice";
+import { AppDispatch } from "../../redux/store";
+import { IRecipe } from "../../interfaces/IRecipe";
 
 export default function HomePage() {
-  /* const dispatch = useDispatch(); */
+  const dispatch = useDispatch<AppDispatch>();
+  const recipes = useSelector(
+    (state: { recipes: { recipes: IRecipe[] } }) => state.recipes.recipes
+  );
 
-  /* const [recipes, setRecipes] = useState<Array<object>>([]); */
   const [sortedRecipes, setSortedRecipes] = useState<IRecipe[]>([]);
-  const [activeCategory, setActiveCategory] = useState<string>("breakfast");
+  const [activeCategory, setActiveCategory] = useState<string>("");
 
   useEffect(() => {
-    const newRecipes = apiData.filter(
-      (setSortedRecipe) => setSortedRecipe.category == activeCategory
+    dispatch(fetchRecipes());
+    setActiveCategory("breakfast");
+  }, []);
+
+  useEffect(() => {
+    const newRecipes = recipes.filter(
+      (recipe: IRecipe) => recipe.category == activeCategory
     );
     setSortedRecipes(newRecipes);
+    console.log(newRecipes);
   }, [activeCategory]);
 
   return (
@@ -69,9 +70,10 @@ export default function HomePage() {
             </button>
           </div>
           <div className={s.recipe_cards}>
-            {sortedRecipes.map((recipe) => (
-              <RecipeCard recipe={recipe} />
-            ))}
+            {sortedRecipes.length > 0 &&
+              sortedRecipes.map((recipe) => (
+                <RecipeCard recipe={recipe} key={recipe.id} />
+              ))}
           </div>
         </div>
       </div>

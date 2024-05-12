@@ -5,14 +5,16 @@ interface IUserDataState {
   accessToken: string;
   refreshToken: string;
   userId: number;
+  username: string;
   email: string;
 }
 
 const initialState: IUserDataState = {
-  isAuth: false,
+  isAuth: true,
   accessToken: "",
   refreshToken: "",
   userId: 0,
+  username: "",
   email: "",
 };
 

@@ -1,0 +1,62 @@
+@import "../../scss//App.scss";
+
+.recipe_page {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: (28/16) * 1rem;
+  position: relative;
+  align-items: center;
+  .back_button {
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    top: 2rem;
+    left: 2rem;
+  }
+  img {
+    width: 100%;
+  }
+  .recipe_content_wrapper {
+    width: (982/1440) * 100 * 1%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    .recipe_author_block {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      .recipe_author {
+        font-size: (14/16) * 1rem;
+        color: $Text-faded;
+      }
+    }
+    .recipe_cooking {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      img {
+        width: 18px;
+        height: 18px;
+      }
+      .recipe_cooking_time {
+        display: flex;
+        align-items: center;
+        color: $Primary;
+        gap: 10px;
+      }
+      .recipe_cooking_level {
+        width: (52/16) * 1rem;
+        height: (29/16) * 1rem;
+        border-radius: ((27/16)/2) * 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $Secondary;
+      }
+    }
+    
+  }
+}

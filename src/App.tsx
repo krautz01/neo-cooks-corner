@@ -22,8 +22,8 @@ function App() {
           <Navbar />
           <Routes>
             <Route path={"/"} element={<HomePage />} />
+            <Route path={"/recipe/:id"} element={<DetailRecipePage />} />
             <Route path={"/not-found"} element={<NotFoundPage />} />
-            <Route path={"/recipe-detail"} element={<DetailRecipePage />} />
             <Route path={"/recipe-author"} element={<AuthorPage />} />
             <Route path={"/recipe-search"} element={<SearchPage />} />
             <Route path={"/user-profile"} element={<UserProfilePage />} />

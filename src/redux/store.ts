@@ -4,7 +4,7 @@ import recipeSlice from "./reducers/recipeSlice";
 
 const rootReducer = combineReducers({
   auth: userSlice,
-  recipe: recipeSlice,
+  recipes: recipeSlice,
 });
 
 export const store = configureStore({
