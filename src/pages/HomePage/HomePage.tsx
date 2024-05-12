@@ -1,7 +1,19 @@
+import { useEffect, useState } from "react";
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import s from "./HomePage.module.scss";
+import { useDispatch } from "react-redux";
+import apiData from "../../utils/apiData.json";
 
 export default function HomePage() {
+  const dispatch = useDispatch();
+
+  const [recipes, setRecipes] = useState<Array<object>>([]);
+
+  useEffect(() => {
+    setRecipes(apiData);
+    console.log(recipes);
+  }, []);
+
   return (
     <div className={s.home_page}>
       <div className={s.home_page_content}>
@@ -16,14 +28,14 @@ export default function HomePage() {
               Lunch
             </button>
             <button className={s.recipe_category} type="button">
-              Diiner
+              Dinner
             </button>
           </div>
           <div className={s.recipe_cards}>
-            <RecipeCard/>
-            <RecipeCard/>
-            <RecipeCard/>
-            <RecipeCard/>
+            <RecipeCard />
+            <RecipeCard />
+            <RecipeCard />
+            <RecipeCard />
           </div>
         </div>
       </div>

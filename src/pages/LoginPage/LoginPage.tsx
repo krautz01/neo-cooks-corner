@@ -1,16 +1,21 @@
 import { Link, useNavigate } from "react-router-dom";
-import s from "./LoginPage.module.scss";
 import { Button } from "../../ui/Button/Button";
-import { Input } from "../../ui/Input/Input";
+import { Input } from "../../ui/Input";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/reducers/userSlice";
+import React from "react";
+import * as yup from "yup";
+import s from "./LoginPage.module.scss";
+import visible from "../../assets/icons/visible_iconsvg.svg";
+import notvisible from "../../assets/icons/notvisible_icon.svg";
 
 export default function LoginPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [passwordVisible, setPasswordVisible] = React.useState(false);
 
   interface IFormValues {
     email: string;
@@ -35,7 +40,7 @@ export default function LoginPage() {
   const onSubmit = (data: IFormValues) => {
     console.log(data);
     dispatch(login());
-    navigate("/")
+    navigate("/");
     // Отправка данных на сервер или выполнение других действий после отправки формы
   };
   return (
@@ -50,15 +55,32 @@ export default function LoginPage() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className={s.input_block}>
             <label htmlFor="email">Email</label>
-            <Input type="email" id="email" {...register("email")} />
+            <Input
+              type="email"
+              id="email"
+              placeholder="Enter your Email"
+              {...register("email")}
+            />
             <p className={s.valid_error}>{errors.email?.message}</p>
           </div>
           <div className={s.input_block}>
             <label htmlFor="password">Password</label>
-            <Input type="password" id="password" {...register("password")} />
+            <div className={s.input_wrapper}>
+              <Input
+                type={passwordVisible ? "text" : "password"}
+                placeholder="Enter your Password"
+                id="password"
+                {...register("password")}
+              />
+              <button
+                type="button"
+                onClick={() => setPasswordVisible(!passwordVisible)}
+              >
+                <img src={passwordVisible ? visible : notvisible} alt="eye" />
+              </button>
+            </div>
             <p className={s.valid_error}>{errors.password?.message}</p>
           </div>
-
           <Button type="submit">Sign In</Button>
         </form>
         <div className={s.link_to_register}>

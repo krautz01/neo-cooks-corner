@@ -6,6 +6,7 @@ interface IInputProps {
   id: string;
   onChange?: ChangeEventHandler<HTMLInputElement>;
   register?: string;
+  placeholder?: string;
 }
 
 export const Input = styled.input<IInputProps>`
@@ -16,4 +17,5 @@ export const Input = styled.input<IInputProps>`
   border: none;
   background: #ededed;
   font-size: 1rem;
+  color: #343434;
 `;

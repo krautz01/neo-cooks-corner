@@ -19,9 +19,11 @@ export default function Navbar() {
 
   return (
     <div className={s.navbar}>
-      <Link to={"/"}>
-        <img src={cooks_corner_link} alt="cooks_corner_link" />
-      </Link>
+      <div className={s.cooks_corner_link}>
+        <Link to={"/"}>
+          <img src={cooks_corner_link} alt="cooks_corner_link" />
+        </Link>
+      </div>
       <div className={s.navbar_links}>
         <div className={s.navbar_links_top}>
           <Link to={"/"}>
@@ -34,9 +36,7 @@ export default function Navbar() {
             <img src={profile_link} alt="" />
           </Link>
         </div>
-        <button onClick={() => handleLogOut} >
-          <img src={logout_link} alt="logout_link" />
-        </button>
+        <img src={logout_link} alt="logout_link" onClick={() => handleLogOut} />
       </div>
     </div>
   );

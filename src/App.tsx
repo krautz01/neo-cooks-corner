@@ -13,12 +13,12 @@ import GreetingPage from "./pages/GreetingPage/GreetingPage";
 import Navbar from "./components/Navbar/Navbar";
 
 function App() {
-  /* const isAuth = useAppSelector((state) => state.auth.isAuth); */
-  const isAuth = true;
+  const isAuth = useAppSelector((state) => state.auth.isAuth);
+
   return (
     <>
       {isAuth ? (
-        <div className="nav_and_pag">
+        <>
           <Navbar />
           <Routes>
             <Route path={"/"} element={<HomePage />} />
@@ -28,7 +28,7 @@ function App() {
             <Route path={"/recipe-search"} element={<SearchPage />} />
             <Route path={"/user-profile"} element={<UserProfilePage />} />
           </Routes>
-        </div>
+        </>
       ) : (
         <Routes>
           <Route path={"/"} element={<GreetingPage />} />

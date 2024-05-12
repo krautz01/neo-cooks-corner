@@ -2,22 +2,27 @@
 .navbar {
   width: 6rem;
   background: $Input-background;
-  img {
-    width: 4rem;
-    height: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ 
+  .cooks_corner_link{
+    height: 98px;
+    width: 76px;
+    border-bottom: 1px solid $Text-faded;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .navbar_links {
-    height: 94%;
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 66%;
+    justify-content: space-between;
     .navbar_links_top {
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
-    }
-    button {
-      background: none;
     }
   }
 }
