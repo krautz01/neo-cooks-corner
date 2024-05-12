@@ -1,12 +1,13 @@
 import s from "./Navbar.module.scss";
-import cooks_corner_link from "../../assets/icons/cooks_corner_link.svg";
-import home_link from "../../assets/icons/home_link.svg";
 import search_link from "../../assets/icons/search_link.svg";
 import profile_link from "../../assets/icons/profile_link.svg";
 import logout_link from "../../assets/icons/logout_link.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../redux/reducers/userSlice";
 import { useDispatch } from "react-redux";
+import CooksCornerLink from "../../ui/CooksCornerLink";
+import { useState } from "react";
+import HomeLink from "../../ui/HomeLink";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -17,17 +18,19 @@ export default function Navbar() {
     navigate("/");
   };
 
+  const [touched, setTouched] = useState<boolean>(true);
+
   return (
     <div className={s.navbar}>
       <div className={s.cooks_corner_link}>
-        <Link to={"/"}>
-          <img src={cooks_corner_link} alt="cooks_corner_link" />
+        <Link to={"/"} onClick={() => setTouched(!touched)}>
+          <CooksCornerLink touched={touched} />
         </Link>
       </div>
       <div className={s.navbar_links}>
         <div className={s.navbar_links_top}>
-          <Link to={"/"}>
-            <img src={home_link} alt="" />
+          <Link to={"/"} onClick={() => setTouched(!touched)}>
+            <HomeLink touched={touched} />
           </Link>
           <Link to={"/recipe-search"}>
             <img src={search_link} alt="" />

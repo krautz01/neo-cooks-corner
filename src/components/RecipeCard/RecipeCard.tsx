@@ -18,7 +18,6 @@ interface IRecipeCardProps {
 }
 
 const RecipeCard: React.FC<IRecipeCardProps> = ({ recipe }) => {
-  console.log(zozo);
   return (
     <div className={s.recipe_card} style={{ backgroundImage: `url(${zozo})` }}>
       <div className={s.recipe_card_info}>

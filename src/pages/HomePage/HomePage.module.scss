@@ -25,7 +25,6 @@
         display: flex;
         gap: 5rem;
         button {
-          font-weight: 400;
           color: $Text-faded;
           outline: none;
           border: none;
@@ -35,6 +34,9 @@
           font-weight: 500;
           border-bottom: 1px solid #343434;
           color: #343434;
+          button {
+            font-weight: 500;
+          }
         }
       }
       .recipe_cards {
