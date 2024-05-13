@@ -8,6 +8,8 @@ import { useDispatch } from "react-redux";
 import CooksCornerLink from "../../ui/CooksCornerLink";
 import { useState } from "react";
 import HomeLink from "../../ui/HomeLink";
+import SearchLink from "../../ui/SearchLink";
+import ProfileLink from "../../ui/ProfileLink";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -19,6 +21,9 @@ export default function Navbar() {
   };
 
   const [touched, setTouched] = useState<boolean>(true);
+  const [homeTouched, setHomeTouched] = useState<boolean>(false);
+  const [searchTouched, setSearchTouched] = useState<boolean>(false);
+  const [profileTouched, setProfileTouched] = useState<boolean>(false);
 
   return (
     <div className={s.navbar}>
@@ -29,14 +34,20 @@ export default function Navbar() {
       </div>
       <div className={s.navbar_links}>
         <div className={s.navbar_links_top}>
-          <Link to={"/"} onClick={() => setTouched(!touched)}>
-            <HomeLink touched={touched} />
+          <Link to={"/"} onClick={() => setHomeTouched(!homeTouched)}>
+            <HomeLink touched={homeTouched} />
           </Link>
-          <Link to={"/recipe-search"}>
-            <img src={search_link} alt="" />
+          <Link
+            to={"/recipe-search"}
+            onClick={() => setSearchTouched(!searchTouched)}
+          >
+            <SearchLink touched={searchTouched} />
           </Link>
-          <Link to={"/user-profile"}>
-            <img src={profile_link} alt="" />
+          <Link
+            to={"/user-profile"}
+            onClick={() => setProfileTouched(!profileTouched)}
+          >
+            <ProfileLink touched={profileTouched} />
           </Link>
         </div>
         <img src={logout_link} alt="logout_link" onClick={() => handleLogOut} />
