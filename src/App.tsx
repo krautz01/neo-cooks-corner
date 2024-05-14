@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
 import { useAppSelector } from "./redux/hooks";
+import "./scss/App.scss";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import HomePage from "./pages/HomePage/HomePage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
@@ -23,10 +23,10 @@ function App() {
           <Routes>
             <Route path={"/"} element={<HomePage />} />
             <Route path={"/recipe/:id"} element={<DetailRecipePage />} />
+            <Route path={"/recipe/:id/author"} element={<AuthorPage />} />
+            <Route path={"/search"} element={<SearchPage />} />
+            <Route path={"/profile"} element={<UserProfilePage />} />
             <Route path={"/not-found"} element={<NotFoundPage />} />
-            <Route path={"/recipe-author"} element={<AuthorPage />} />
-            <Route path={"/recipe-search"} element={<SearchPage />} />
-            <Route path={"/user-profile"} element={<UserProfilePage />} />
           </Routes>
         </>
       ) : (
