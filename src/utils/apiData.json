@@ -1,5 +1,6 @@
 [
   {
+    "id": 0,
     "photo": "https://www.example.com/spaghetti_carbonara.jpg",
     "title": "Spaghetti Carbonara",
     "likes": 256,
@@ -8,6 +9,7 @@
     "savedCount": 243
   },
   {
+    "id": 1,
     "photo": "https://www.example.com/steak_with_baked_potatoes.jpg",
     "title": "Steak with Baked Potatoes",
     "likes": 123,
@@ -16,6 +18,7 @@
     "savedCount": 167
   },
   {
+    "id": 2,
     "photo": "https://www.example.com/vegetable_omelette.jpg",
     "title": "Vegetable Omelette",
     "likes": 345,
@@ -24,6 +27,7 @@
     "savedCount": 325
   },
   {
+    "id": 3,
     "photo": "https://www.example.com/orange_juice.jpg",
     "title": "Fresh Orange Juice",
     "likes": 112,
@@ -32,6 +36,7 @@
     "savedCount": 91
   },
   {
+    "id": 4,
     "photo": "https://www.example.com/chicken_and_avocado_salad.jpg",
     "title": "Chicken and Avocado Salad",
     "likes": 98,
@@ -40,6 +45,7 @@
     "savedCount": 345
   },
   {
+    "id": 5,
     "photo": "https://www.example.com/greek_salad.jpg",
     "title": "Greek Salad",
     "likes": 312,
@@ -48,6 +54,7 @@
     "savedCount": 94
   },
   {
+    "id": 6,
     "photo": "https://www.example.com/pizza.jpg",
     "title": "Margherita Pizza",
     "likes": 431,
@@ -56,6 +63,7 @@
     "savedCount": 336
   },
   {
+    "id": 7,
     "photo": "https://www.example.com/burger.jpg",
     "title": "Classic Cheeseburger",
     "likes": 289,
@@ -64,6 +72,7 @@
     "savedCount": 283
   },
   {
+    "id": 8,
     "photo": "https://www.example.com/pasta_alfredo.jpg",
     "title": "Fettuccine Alfredo",
     "likes": 178,
@@ -72,6 +81,7 @@
     "savedCount": 102
   },
   {
+    "id": 9,
     "photo": "https://www.example.com/pancakes.jpg",
     "title": "Blueberry Pancakes",
     "likes": 203,
@@ -80,6 +90,7 @@
     "savedCount": 284
   },
   {
+    "id": 10,
     "photo": "https://www.example.com/salmon.jpg",
     "title": "Grilled Salmon",
     "likes": 375,
@@ -88,6 +99,7 @@
     "savedCount": 372
   },
   {
+    "id": 11,
     "photo": "https://www.example.com/sandwich.jpg",
     "title": "Club Sandwich",
     "likes": 264,
@@ -96,6 +108,7 @@
     "savedCount": 347
   },
   {
+    "id": 12,
     "photo": "https://www.example.com/omelette.jpg",
     "title": "Mushroom Omelette",
     "likes": 141,
@@ -104,6 +117,7 @@
     "savedCount": 71
   },
   {
+    "id": 13,
     "photo": "https://www.example.com/pasta_primavera.jpg",
     "title": "Pasta Primavera",
     "likes": 187,
@@ -112,6 +126,7 @@
     "savedCount": 384
   },
   {
+    "id": 14,
     "photo": "https://www.example.com/french_toast.jpg",
     "title": "French Toast",
     "likes": 225,
@@ -120,6 +135,7 @@
     "savedCount": 291
   },
   {
+    "id": 15,
     "photo": "https://www.example.com/sushi.jpg",
     "title": "Sushi Platter",
     "likes": 493,
@@ -128,27 +144,12 @@
     "savedCount": 313
   },
   {
+    "id": 16,
     "photo": "https://www.example.com/chicken_noodle_soup.jpg",
     "title": "Chicken Noodle Soup",
     "likes": 132,
     "category": "lunch",
-    "author": "SoupMasterChef",
-    "savedCount": 132
-  },
-  {
-    "photo": "https://www.example.com/grilled_cheese.jpg",
-    "title": "Grilled Cheese Sandwich",
-    "likes": 318,
-    "category": "lunch",
-    "author": "CheeseLover88",
-    "savedCount": 176
-  },
-  {
-    "photo": "https://www.example.com/fruit_salad.jpg",
-    "title": "Fresh Fruit Salad",
-    "likes": 285,
-    "category": "breakfast",
-    "author": "FruitFanatic",
-    "savedCount": 375
+    "author": "SushiSensation",
+    "savedCount": 313
   }
 ]

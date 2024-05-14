@@ -1,15 +1,15 @@
-import s from "./Navbar.module.scss";
-import search_link from "../../assets/icons/search_link.svg";
-import profile_link from "../../assets/icons/profile_link.svg";
-import logout_link from "../../assets/icons/logout_link.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../redux/reducers/userSlice";
 import { useDispatch } from "react-redux";
-import CooksCornerLink from "../../ui/CooksCornerLink";
-import { useState } from "react";
-import HomeLink from "../../ui/HomeLink";
+import React from "react";
+import s from "./Navbar.module.scss";
+import CooksCornerLink from "../../ui/NavbarLinks/CooksCornerLink";
+import HomeLink from "../../ui/NavbarLinks/HomeLink";
+import SearchLink from "../../ui/NavbarLinks/SearchLink";
+import ProfileLink from "../../ui/NavbarLinks/ProfileLink";
+import logout_link from "../../assets/icons/logout_link.svg";
 
-export default function Navbar() {
+const Navbar: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -18,29 +18,23 @@ export default function Navbar() {
     navigate("/");
   };
 
-  const [touched, setTouched] = useState<boolean>(true);
-
   return (
     <div className={s.navbar}>
-      <div className={s.cooks_corner_link}>
-        <Link to={"/"} onClick={() => setTouched(!touched)}>
-          <CooksCornerLink touched={touched} />
-        </Link>
-      </div>
+      <div className={s.cooks_corner_link}><CooksCornerLink to={"/"} /></div>
       <div className={s.navbar_links}>
         <div className={s.navbar_links_top}>
-          <Link to={"/"} onClick={() => setTouched(!touched)}>
-            <HomeLink touched={touched} />
-          </Link>
-          <Link to={"/recipe-search"}>
-            <img src={search_link} alt="" />
-          </Link>
-          <Link to={"/user-profile"}>
-            <img src={profile_link} alt="" />
-          </Link>
+          <HomeLink to={"/"}/>
+          <ProfileLink to={"/profile"}/>
+          <SearchLink to={"/search"}/>
+          <img
+            src={logout_link}
+            alt="logout_link"
+            onClick={() => handleLogOut}
+          />
         </div>
-        <img src={logout_link} alt="logout_link" onClick={() => handleLogOut} />
       </div>
     </div>
   );
-}
+};
+
+export default Navbar;
