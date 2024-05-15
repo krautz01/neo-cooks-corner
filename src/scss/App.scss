@@ -1,4 +1,3 @@
-
 $Primary: #fa9e31;
 $Secondary: #fff6de;
 $Text: #343434;
@@ -49,9 +48,12 @@ body {
       font-size: 1.5rem;
       font-weight: 500;
     }
+    h3 {
+      font-size: (18/16) * 1rem;
+      font-weight: 500;
+    }
 
-    input,
-    button {
+    input {
       text-decoration: none;
       outline: none;
       border: 1px solid;
@@ -59,9 +61,19 @@ body {
     }
 
     button {
-      color: #ffffff;
+      text-decoration: none;
+      outline: none;
+      font-size: 1rem;
+    }
+
+    button {
       font-weight: 500;
       font-size: 1rem;
+    }
+    ul {
+      li {
+        list-style-type: none;
+      }
     }
   }
 }

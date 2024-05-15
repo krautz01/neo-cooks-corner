@@ -57,6 +57,45 @@
         background: $Secondary;
       }
     }
-    
+    .recipe_raitings {
+      display: flex;
+      gap: 1.5rem;
+      img {
+        width: 2rem;
+        height: 2rem;
+        fill: #343434;
+      }
+      div {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+    }
+    .recipe_desc {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      p {
+        line-height: 28px;
+      }
+    }
+    .recipe_ingredients {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      color: #343434;
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        li {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid $Input-background;
+          height: 34px;
+        }
+      }
+    }
   }
 }
