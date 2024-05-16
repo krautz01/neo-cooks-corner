@@ -30,7 +30,25 @@ body {
     font-weight: 400;
     color: #343434;
     background: #ffffff;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 14fr;
+    grid-template-rows: 1fr;
+
+    .navbar {
+      grid-column: 1;
+      grid-row: 1;
+      background: $Input-background;
+    }
+
+    .pages {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    .authpages {
+      grid-column: span 2;
+      grid-row: 1;
+    }
 
     a {
       text-decoration: none;
@@ -53,19 +71,19 @@ body {
       font-weight: 500;
     }
 
-    input,
+    input {
+      text-decoration: none;
+      outline: none;
+      font-size: 1rem;
+      height: 56px;
+      border: none;
+    }
     button {
       text-decoration: none;
       outline: none;
       font-size: 1rem;
-      border: none;
       height: 56px;
-    }
-
-    button {
-      color: #ffffff;
-      font-weight: 500;
-      font-size: 1rem;
+      /* font-weight: 500; */
     }
     ul {
       li {
@@ -78,12 +96,30 @@ body {
 @media screen and (width < 426px) {
   body {
     #root {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 14fr 1fr;
       h1 {
         font-size: 25px;
         line-height: 37.5px;
       }
-      button, input{
+      button,
+      input {
         height: 44px;
+      }
+
+      .authpages {
+        grid-row: span 2;
+      }
+
+      .pages {
+        grid-row: 1;
+        grid-column: 1;
+      }
+
+      .navbar {
+        grid-row: 2;
+        grid-column: 1;
       }
     }
   }

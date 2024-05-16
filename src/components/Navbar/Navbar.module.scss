@@ -1,34 +1,48 @@
 @import "../../scss/App.scss";
 .navbar {
-  width: 6rem;
-  background: $Input-background;
   display: flex;
   flex-direction: column;
   align-items: center;
-  svg {
-    width: 3.5rem;
-    height: 3.5rem;
-  }
-
+  background: #ffffff;
   .cooks_corner_link {
     height: 98px;
     border-bottom: 1px solid $Text-faded;
     display: flex;
     align-items: center;
     justify-content: center;
-    button {
-      border: none;
-    }
   }
   .navbar_links {
     margin-top: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    .navbar_links_top {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
+    gap: 1.5rem;
+    .logout_button {
+      width: 3.5rem;
+      height: 3.5rem;
+      border: none;
+      border-radius: 10px;
+      background: $Background;
+    }
+  }
+}
+
+@media screen and (width<426px) {
+  .navbar {
+    flex-direction: row;
+    align-items: center;
+    .cooks_corner_link {
+      display: none;
+    }
+    .navbar_links {
+      margin-top: 0;
+      width: 100%;
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-around;
+      .logout_button {
+        display: none;
+      }
     }
   }
 }

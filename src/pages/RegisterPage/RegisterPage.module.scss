@@ -52,6 +52,9 @@
           }
         }
       }
+      button {
+        color: #ffffff;
+      }
 
       label {
         font-weight: 500;
@@ -79,7 +82,7 @@
         width: 100%;
         gap: 1rem;
         font-size: 14px;
-        label{
+        label {
           font-size: 1rem;
         }
         .input_block {

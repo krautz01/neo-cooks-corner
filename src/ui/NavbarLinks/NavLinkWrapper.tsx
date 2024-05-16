@@ -14,4 +14,7 @@ export const NavLinkWrapper = styled.div<NavLinkWrapperProps>`
   background: ${(props) => (props.condition ? " #FA9E31" : "#ffffff")};
   border-radius: 10px;
   opacity: 0px;
+  @media (width< 426px) {
+    background: #ffffff;
+  }
 `;

@@ -1,8 +1,6 @@
 @import "../../scss/App.scss";
 
 .search_page {
-  width: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,6 +13,7 @@
     padding: 4px 48px 4px 48px;
     border-radius: 22px;
     background: $Primary;
+    border: none;
   }
   .search_input_block {
     width: 100%;
