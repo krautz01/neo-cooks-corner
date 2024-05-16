@@ -16,21 +16,21 @@ const SearchLink: React.FC<{ to: string }> = ({ to }) => {
           width="56"
           height="56"
           rx="10"
-          fill={matched ? "#fafafa" : "#FA9E31"}
+          fill={matched ? "#FA9E31" : "#fafafa"}
         />
         <path
           d="M25.8102 33.2585C29.9238 33.2585 33.2585 29.9238 33.2585 25.8102C33.2585 21.6966 29.9238 18.3619 25.8102 18.3619C21.6966 18.3619 18.3619 21.6966 18.3619 25.8102C18.3619 29.9238 21.6966 33.2585 25.8102 33.2585Z"
-          stroke={matched ? "#8a8a8a" : "#fafafa"}
-          stroke-width="2"
-          stroke-miterlimit="10"
+          stroke={matched ? "#fafafa" : "#8a8a8a"}
+          strokeWidth="2"
+          strokeMiterlimit="10"
         />
         <path
           d="M31.2698 31.2698L37.6381 37.6381"
-          stroke={matched ? "#8a8a8a" : "#fafafa"}
-          stroke-width="2"
-          stroke-miterlimit="10"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          stroke={matched ? "#fafafa" : "#8a8a8a"}
+          strokeWidth="2"
+          strokeMiterlimit="10"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
     </Link>

@@ -35,10 +35,6 @@
           display: flex;
           justify-content: flex-end;
           align-items: center;
-          img {
-            width: 1.5rem;
-            height: 1.5rem;
-          }
           button {
             position: absolute;
             width: 1.5rem;
@@ -46,6 +42,10 @@
             background: none;
             border: none;
             margin-right: 1rem;
+            img {
+              width: 1.5rem;
+              height: 1.5rem;
+            }
           }
         }
       }

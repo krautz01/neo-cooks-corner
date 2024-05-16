@@ -53,17 +53,11 @@ body {
       font-weight: 500;
     }
 
-    input {
-      text-decoration: none;
-      outline: none;
-      border: 1px solid;
-      font-size: 1rem;
-    }
-
-    button {
+    input, button {
       text-decoration: none;
       outline: none;
       font-size: 1rem;
+      border: none;
     }
 
     button {

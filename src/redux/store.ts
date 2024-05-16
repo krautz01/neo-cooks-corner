@@ -1,10 +1,12 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import userSlice from "./reducers/userSlice";
 import recipeSlice from "./reducers/recipeSlice";
+import searchSlice from "./reducers/searchSlice";
 
 const rootReducer = combineReducers({
   auth: userSlice,
   recipes: recipeSlice,
+  search: searchSlice,
 });
 
 export const store = configureStore({
