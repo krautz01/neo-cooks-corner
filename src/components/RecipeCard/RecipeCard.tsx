@@ -1,7 +1,7 @@
 import s from "./RecipeCard.module.scss";
 import zozo from "../../assets/images/zozo.png";
-import like_icon from "../../assets/icons/like_icon.svg";
-import saved_icon from "../../assets/icons/saved_icon.svg";
+import like_icon from "../../assets/icons/RecipeIcons/like_icon.svg";
+import saved_icon from "../../assets/icons/RecipeIcons/saved_icon.svg";
 import React from "react";
 import { Link } from "react-router-dom";
 import { IRecipe } from "../../interfaces/IRecipe";

@@ -538,6 +538,10 @@
     "cookingLink": "https://www.youtube.com/watch?v=chicken_noodle_soup_recipe",
     "ingredients": [
       {
+        "name": "Parsley",
+        "quantity": "For garnish"
+      },
+      {
         "name": "Chicken Breast",
         "quantity": "200g"
       },
@@ -576,12 +580,7 @@
       {
         "name": "Parsley",
         "quantity": "For garnish"
-      },
-      {
-        "name": "Parsley",
-        "quantity": "For garnish"
       }
     ]
   }
 ]
-

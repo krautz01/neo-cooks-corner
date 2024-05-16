@@ -1,5 +1,5 @@
 export default function ProfilePage() {
   return (
-    <div>UserProfilePage</div>
+    <div style={{width: "100%"}}>UserProfilePage</div>
   )
 }

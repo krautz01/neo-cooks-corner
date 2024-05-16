@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { IRecipe } from "../../interfaces/IRecipe";
 import apiData from "../../utils/apiData.json";
+import axios from "axios";
 
 interface ISearchState {
   recipes: Array<IRecipe>;
@@ -26,8 +27,10 @@ export const searchRecipes = createAsyncThunk(
       };
     }
     try {
-      /* const response = await fetch("../../utils/apiData.json");
-      const data = await response.json(); */
+      /* const response = await axios.get("../../utils/apiData.json");
+      const data = response.data;
+      const newData = data.filter((recipe: IRecipe) =>
+        recipe.title.includes(searchTerm)) */
       const data = apiData.filter((recipe: IRecipe) =>
         recipe.title.includes(searchTerm)
       );
