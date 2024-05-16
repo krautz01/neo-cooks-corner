@@ -1,15 +1,17 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Button } from "../../ui/Button";
-import { Input } from "../../ui/Input";
+import { Button } from "@ui/Button.tsx";
+import { Input } from "@ui/Input.tsx";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
-import { login } from "../../redux/reducers/userSlice";
+import { login } from "@redux/reducers/userSlice";
 import * as yup from "yup";
 import React from "react";
 import s from "./RegisterPage.module.scss";
-import visible from "../../assets/icons/visible_iconsvg.svg";
-import notvisible from "../../assets/icons/notvisible_icon.svg";
+import visible from "@assets/icons/visible_iconsvg.svg";
+import notvisible from "@assets/icons/notvisible_icon.svg";
+import email_icon from "@assets/icons/FormIcons/email_icon.svg";
+import user_icon from "@assets/icons/FormIcons/user_icon.svg"
 
 interface IFormValues {
   username: string;
@@ -67,12 +69,32 @@ export default function RegisterPage() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className={s.input_block}>
             <label htmlFor="username">Name</label>
-            <Input type="text" id="username" {...register("username")} placeholder="Enter yout name"/>
+            <div className={s.input_wrapper}>
+              <Input
+                type="text"
+                id="username"
+                {...register("username")}
+                placeholder="Enter yout name"
+              />
+              <button type="button">
+                <img src={user_icon} alt="user_icon" />
+              </button>
+            </div>
             <p className={s.valid_error}>{errors.username?.message}</p>
           </div>
           <div className={s.input_block}>
             <label htmlFor="email">Gmail</label>
-            <Input type="email" id="email" {...register("email")} placeholder="Enter your Email"/>
+            <div className={s.input_wrapper}>
+              <Input
+                type="email"
+                id="email"
+                {...register("email")}
+                placeholder="Enter your Email"
+              />
+              <button type="button">
+                <img src={email_icon} alt="email_icon" />
+              </button>
+            </div>
             <p className={s.valid_error}>{errors.email?.message}</p>
           </div>
           <div className={s.input_block}>
@@ -119,7 +141,7 @@ export default function RegisterPage() {
           <Button type="submit">Sign In</Button>
         </form>
         <div className={s.link_to_register}>
-          Already have an account?<Link to={"/login"}>Sign In Now</Link>
+          Already have an account? <Link to={"/login"}>Sign In Now</Link>
         </div>
       </div>
     </div>

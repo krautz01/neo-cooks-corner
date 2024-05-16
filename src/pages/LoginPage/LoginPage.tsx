@@ -1,16 +1,16 @@
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Button } from "../../ui/Button";
-import { Input } from "../../ui/Input";
+import { Button } from "@ui/Button";
+import { Input } from "@ui/Input";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
-import { login } from "../../redux/reducers/userSlice";
-import React from "react";
+import { login } from "@redux/reducers/userSlice";
 import * as yup from "yup";
 import s from "./LoginPage.module.scss";
-import visible from "../../assets/icons/visible_iconsvg.svg";
-import notvisible from "../../assets/icons/notvisible_icon.svg";
-import email_icon from "../../assets/icons/FormIcons/email_icon.svg";
+import visible from "@assets/icons/visible_iconsvg.svg";
+import notvisible from "@assets/icons/notvisible_icon.svg";
+import email_icon from "@assets/icons/FormIcons/email_icon.svg";
 
 export default function LoginPage() {
   const dispatch = useDispatch();

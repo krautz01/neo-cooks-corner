@@ -68,6 +68,8 @@
 @media screen and (width < 426px) {
   .login_page {
     .login_page_greeting {
+      padding: 0 20px 0 20px;
+      align-items: flex-start;
       h1 {
         font-size: 25px;
       }
