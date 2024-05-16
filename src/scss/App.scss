@@ -53,20 +53,37 @@ body {
       font-weight: 500;
     }
 
-    input, button {
+    input,
+    button {
       text-decoration: none;
       outline: none;
       font-size: 1rem;
       border: none;
+      height: 56px;
     }
 
     button {
+      color: #ffffff;
       font-weight: 500;
       font-size: 1rem;
     }
     ul {
       li {
         list-style-type: none;
+      }
+    }
+  }
+}
+
+@media screen and (width < 426px) {
+  body {
+    #root {
+      h1 {
+        font-size: 25px;
+        line-height: 37.5px;
+      }
+      button, input{
+        height: 44px;
       }
     }
   }

@@ -10,6 +10,7 @@ import * as yup from "yup";
 import s from "./LoginPage.module.scss";
 import visible from "../../assets/icons/visible_iconsvg.svg";
 import notvisible from "../../assets/icons/notvisible_icon.svg";
+import email_icon from "../../assets/icons/FormIcons/email_icon.svg";
 
 export default function LoginPage() {
   const dispatch = useDispatch();
@@ -55,12 +56,17 @@ export default function LoginPage() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className={s.input_block}>
             <label htmlFor="email">Email</label>
-            <Input
-              type="email"
-              id="email"
-              placeholder="Enter your Email"
-              {...register("email")}
-            />
+            <div className={s.input_wrapper}>
+              <Input
+                type="email"
+                id="email"
+                placeholder="Enter your Email"
+                {...register("email")}
+              />
+              <button type="button">
+                <img src={email_icon} alt="eye" />
+              </button>
+            </div>
             <p className={s.valid_error}>{errors.email?.message}</p>
           </div>
           <div className={s.input_block}>
@@ -84,7 +90,7 @@ export default function LoginPage() {
           <Button type="submit">Sign In</Button>
         </form>
         <div className={s.link_to_register}>
-          I don't have an account?<Link to={"/register"}>Sign Up Now</Link>
+          I don't have an account? <Link to={"/register"}>Sign Up Now</Link>
         </div>
       </div>
     </div>
