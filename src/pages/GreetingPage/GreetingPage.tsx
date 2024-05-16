@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import greeting_logo from "../../assets/icons/greeting_logo.svg";
+import greeting_logo from "@assets/icons/greeting_logo.svg";
 import styles from "./GreetingPage.module.scss";
 
 export default function GreetingPage() {
