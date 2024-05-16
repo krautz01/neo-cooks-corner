@@ -6,7 +6,34 @@
     "likes": 256,
     "category": "dinner",
     "author": "ChefDante",
-    "savedCount": 243
+    "savedCount": 243,
+    "cookingLink": "https://www.youtube.com/watch?v=carbonara_recipe",
+    "ingredients": [
+      {
+        "name": "Spaghetti",
+        "quantity": "200g"
+      },
+      {
+        "name": "Eggs",
+        "quantity": "2"
+      },
+      {
+        "name": "Guanciale or Pancetta",
+        "quantity": "100g"
+      },
+      {
+        "name": "Parmesan Cheese",
+        "quantity": "50g"
+      },
+      {
+        "name": "Black Pepper",
+        "quantity": "To taste"
+      },
+      {
+        "name": "Salt",
+        "quantity": "To taste"
+      }
+    ]
   },
   {
     "id": 1,
@@ -15,7 +42,30 @@
     "likes": 123,
     "category": "dinner",
     "author": "GrillMaster87",
-    "savedCount": 167
+    "savedCount": 167,
+    "cookingLink": "https://www.youtube.com/watch?v=steak_baked_potatoes_recipe",
+    "ingredients": [
+      {
+        "name": "Steak",
+        "quantity": "1 piece"
+      },
+      {
+        "name": "Potatoes",
+        "quantity": "2"
+      },
+      {
+        "name": "Olive Oil",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Salt",
+        "quantity": "To taste"
+      },
+      {
+        "name": "Black Pepper",
+        "quantity": "To taste"
+      }
+    ]
   },
   {
     "id": 2,
@@ -24,7 +74,42 @@
     "likes": 345,
     "category": "breakfast",
     "author": "HealthGuru",
-    "savedCount": 325
+    "savedCount": 325,
+    "cookingLink": "https://www.youtube.com/watch?v=vegetable_omelette_recipe",
+    "ingredients": [
+      {
+        "name": "Eggs",
+        "quantity": "3"
+      },
+      {
+        "name": "Bell Pepper",
+        "quantity": "1"
+      },
+      {
+        "name": "Onion",
+        "quantity": "1"
+      },
+      {
+        "name": "Tomato",
+        "quantity": "1"
+      },
+      {
+        "name": "Mushrooms",
+        "quantity": "4"
+      },
+      {
+        "name": "Salt",
+        "quantity": "To taste"
+      },
+      {
+        "name": "Black Pepper",
+        "quantity": "To taste"
+      },
+      {
+        "name": "Cheese",
+        "quantity": "50g"
+      }
+    ]
   },
   {
     "id": 3,
@@ -33,7 +118,14 @@
     "likes": 112,
     "category": "breakfast",
     "author": "JuiceLover123",
-    "savedCount": 91
+    "savedCount": 91,
+    "cookingLink": "https://www.youtube.com/watch?v=orange_juice_recipe",
+    "ingredients": [
+      {
+        "name": "Oranges",
+        "quantity": "4"
+      }
+    ]
   },
   {
     "id": 4,
@@ -42,7 +134,46 @@
     "likes": 98,
     "category": "lunch",
     "author": "SaladQueen",
-    "savedCount": 345
+    "savedCount": 345,
+    "cookingLink": "https://www.youtube.com/watch?v=chicken_avocado_salad_recipe",
+    "ingredients": [
+      {
+        "name": "Chicken Breast",
+        "quantity": "200g"
+      },
+      {
+        "name": "Avocado",
+        "quantity": "1"
+      },
+      {
+        "name": "Lettuce",
+        "quantity": "100g"
+      },
+      {
+        "name": "Tomato",
+        "quantity": "1"
+      },
+      {
+        "name": "Cucumber",
+        "quantity": "1"
+      },
+      {
+        "name": "Olive Oil",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Lemon Juice",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Salt",
+        "quantity": "To taste"
+      },
+      {
+        "name": "Black Pepper",
+        "quantity": "To taste"
+      }
+    ]
   },
   {
     "id": 5,
@@ -51,7 +182,50 @@
     "likes": 312,
     "category": "lunch",
     "author": "HealthGuru",
-    "savedCount": 94
+    "savedCount": 94,
+    "cookingLink": "https://www.youtube.com/watch?v=greek_salad_recipe",
+    "ingredients": [
+      {
+        "name": "Cucumber",
+        "quantity": "1"
+      },
+      {
+        "name": "Tomato",
+        "quantity": "1"
+      },
+      {
+        "name": "Red Onion",
+        "quantity": "1/4"
+      },
+      {
+        "name": "Kalamata Olives",
+        "quantity": "1/4 cup"
+      },
+      {
+        "name": "Feta Cheese",
+        "quantity": "50g"
+      },
+      {
+        "name": "Olive Oil",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Red Wine Vinegar",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Dried Oregano",
+        "quantity": "1 tsp"
+      },
+      {
+        "name": "Salt",
+        "quantity": "To taste"
+      },
+      {
+        "name": "Black Pepper",
+        "quantity": "To taste"
+      }
+    ]
   },
   {
     "id": 6,
@@ -60,7 +234,38 @@
     "likes": 431,
     "category": "dinner",
     "author": "ChefDante",
-    "savedCount": 336
+    "savedCount": 336,
+    "cookingLink": "https://www.youtube.com/watch?v=pizza_margherita_recipe",
+    "ingredients": [
+      {
+        "name": "Pizza Dough",
+        "quantity": "1 ball"
+      },
+      {
+        "name": "Tomatoes",
+        "quantity": "2"
+      },
+      {
+        "name": "Fresh Mozzarella",
+        "quantity": "200g"
+      },
+      {
+        "name": "Fresh Basil Leaves",
+        "quantity": "Handful"
+      },
+      {
+        "name": "Extra Virgin Olive Oil",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Salt",
+        "quantity": "To taste"
+      },
+      {
+        "name": "Black Pepper",
+        "quantity": "To taste"
+      }
+    ]
   },
   {
     "id": 7,
@@ -69,7 +274,50 @@
     "likes": 289,
     "category": "lunch",
     "author": "BurgerKing99",
-    "savedCount": 283
+    "savedCount": 283,
+    "cookingLink": "https://www.youtube.com/watch?v=classic_cheeseburger_recipe",
+    "ingredients": [
+      {
+        "name": "Ground Beef",
+        "quantity": "150g"
+      },
+      {
+        "name": "Hamburger Bun",
+        "quantity": "1"
+      },
+      {
+        "name": "Cheddar Cheese",
+        "quantity": "1 slice"
+      },
+      {
+        "name": "Lettuce",
+        "quantity": "1 leaf"
+      },
+      {
+        "name": "Tomato",
+        "quantity": "1 slice"
+      },
+      {
+        "name": "Onion",
+        "quantity": "1 slice"
+      },
+      {
+        "name": "Ketchup",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Mustard",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Salt",
+        "quantity": "To taste"
+      },
+      {
+        "name": "Black Pepper",
+        "quantity": "To taste"
+      }
+    ]
   },
   {
     "id": 8,
@@ -78,7 +326,38 @@
     "likes": 178,
     "category": "dinner",
     "author": "PastaLover123",
-    "savedCount": 102
+    "savedCount": 102,
+    "cookingLink": "https://www.youtube.com/watch?v=fettuccine_alfredo_recipe",
+    "ingredients": [
+      {
+        "name": "Fettuccine Pasta",
+        "quantity": "200g"
+      },
+      {
+        "name": "Heavy Cream",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Butter",
+        "quantity": "50g"
+      },
+      {
+        "name": "Parmesan Cheese",
+        "quantity": "50g"
+      },
+      {
+        "name": "Garlic",
+        "quantity": "2 cloves"
+      },
+      {
+        "name": "Salt",
+        "quantity": "To taste"
+      },
+      {
+        "name": "Black Pepper",
+        "quantity": "To taste"
+      }
+    ]
   },
   {
     "id": 9,
@@ -87,7 +366,42 @@
     "likes": 203,
     "category": "breakfast",
     "author": "BreakfastBaker",
-    "savedCount": 284
+    "savedCount": 284,
+    "cookingLink": "https://www.youtube.com/watch?v=blueberry_pancakes_recipe",
+    "ingredients": [
+      {
+        "name": "All-Purpose Flour",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Baking Powder",
+        "quantity": "2 tsp"
+      },
+      {
+        "name": "Salt",
+        "quantity": "1/2 tsp"
+      },
+      {
+        "name": "Milk",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Egg",
+        "quantity": "1"
+      },
+      {
+        "name": "Butter",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Blueberries",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Maple Syrup",
+        "quantity": "To taste"
+      }
+    ]
   },
   {
     "id": 10,
@@ -96,7 +410,34 @@
     "likes": 375,
     "category": "dinner",
     "author": "SeafoodChef",
-    "savedCount": 372
+    "savedCount": 372,
+    "cookingLink": "https://www.youtube.com/watch?v=grilled_salmon_recipe",
+    "ingredients": [
+      {
+        "name": "Salmon Fillets",
+        "quantity": "2"
+      },
+      {
+        "name": "Olive Oil",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Lemon",
+        "quantity": "1"
+      },
+      {
+        "name": "Garlic",
+        "quantity": "2 cloves"
+      },
+      {
+        "name": "Salt",
+        "quantity": "To taste"
+      },
+      {
+        "name": "Black Pepper",
+        "quantity": "To taste"
+      }
+    ]
   },
   {
     "id": 11,
@@ -105,34 +446,46 @@
     "likes": 264,
     "category": "lunch",
     "author": "SandwichGuru",
-    "savedCount": 347
-  },
-  {
-    "id": 12,
-    "photo": "https://www.example.com/omelette.jpg",
-    "title": "Mushroom Omelette",
-    "likes": 141,
-    "category": "breakfast",
-    "author": "OmeletteMaster",
-    "savedCount": 71
-  },
-  {
-    "id": 13,
-    "photo": "https://www.example.com/pasta_primavera.jpg",
-    "title": "Pasta Primavera",
-    "likes": 187,
-    "category": "dinner",
-    "author": "ChefDante",
-    "savedCount": 384
-  },
-  {
-    "id": 14,
-    "photo": "https://www.example.com/french_toast.jpg",
-    "title": "French Toast",
-    "likes": 225,
-    "category": "breakfast",
-    "author": "BreakfastBaker",
-    "savedCount": 291
+    "savedCount": 347,
+    "cookingLink": "https://www.youtube.com/watch?v=club_sandwich_recipe",
+    "ingredients": [
+      {
+        "name": "Bread Slices",
+        "quantity": "3"
+      },
+      {
+        "name": "Cooked Chicken Breast",
+        "quantity": "100g"
+      },
+      {
+        "name": "Cooked Bacon",
+        "quantity": "2 slices"
+      },
+      {
+        "name": "Lettuce",
+        "quantity": "1 leaf"
+      },
+      {
+        "name": "Tomato",
+        "quantity": "2 slices"
+      },
+      {
+        "name": "Mayonnaise",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Mustard",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Salt",
+        "quantity": "To taste"
+      },
+      {
+        "name": "Black Pepper",
+        "quantity": "To taste"
+      }
+    ]
   },
   {
     "id": 15,
@@ -141,7 +494,38 @@
     "likes": 493,
     "category": "lunch",
     "author": "SushiSensation",
-    "savedCount": 313
+    "savedCount": 313,
+    "cookingLink": "https://www.youtube.com/watch?v=sushi_platter_recipe",
+    "ingredients": [
+      {
+        "name": "Sushi Rice",
+        "quantity": "2 cups"
+      },
+      {
+        "name": "Nori Sheets",
+        "quantity": "4"
+      },
+      {
+        "name": "Sashimi-Grade Fish (e.g., Tuna, Salmon)",
+        "quantity": "200g"
+      },
+      {
+        "name": "Vegetables (e.g., Cucumber, Avocado, Carrot)",
+        "quantity": "As desired"
+      },
+      {
+        "name": "Soy Sauce",
+        "quantity": "For dipping"
+      },
+      {
+        "name": "Wasabi",
+        "quantity": "For dipping"
+      },
+      {
+        "name": "Pickled Ginger",
+        "quantity": "For serving"
+      }
+    ]
   },
   {
     "id": 16,
@@ -150,6 +534,54 @@
     "likes": 132,
     "category": "lunch",
     "author": "SushiSensation",
-    "savedCount": 313
+    "savedCount": 313,
+    "cookingLink": "https://www.youtube.com/watch?v=chicken_noodle_soup_recipe",
+    "ingredients": [
+      {
+        "name": "Chicken Breast",
+        "quantity": "200g"
+      },
+      {
+        "name": "Noodles",
+        "quantity": "100g"
+      },
+      {
+        "name": "Carrots",
+        "quantity": "1"
+      },
+      {
+        "name": "Celery",
+        "quantity": "1 stalk"
+      },
+      {
+        "name": "Onion",
+        "quantity": "1"
+      },
+      {
+        "name": "Garlic",
+        "quantity": "2 cloves"
+      },
+      {
+        "name": "Chicken Broth",
+        "quantity": "4 cups"
+      },
+      {
+        "name": "Salt",
+        "quantity": "To taste"
+      },
+      {
+        "name": "Black Pepper",
+        "quantity": "To taste"
+      },
+      {
+        "name": "Parsley",
+        "quantity": "For garnish"
+      },
+      {
+        "name": "Parsley",
+        "quantity": "For garnish"
+      }
+    ]
   }
 ]
+

@@ -1,3 +1,8 @@
+export interface IIngredients {
+  name: string;
+  quantity: string;
+}
+
 export interface IRecipe {
   photo: string;
   title: string;
@@ -6,4 +11,6 @@ export interface IRecipe {
   author: string;
   savedCount: number;
   id: number;
+  cookingLink: string;
+  ingredients: Array<IIngredients>;
 }

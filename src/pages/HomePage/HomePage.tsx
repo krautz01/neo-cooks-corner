@@ -1,32 +1,23 @@
-import { useEffect, useState } from "react";
-import RecipeCard from "../../components/RecipeCard/RecipeCard";
-import s from "./HomePage.module.scss";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchRecipes } from "../../redux/reducers/recipeSlice";
 import { AppDispatch } from "../../redux/store";
 import { IRecipe } from "../../interfaces/IRecipe";
+import RecipeCard from "../../components/RecipeCard/RecipeCard";
+import s from "./HomePage.module.scss";
 
 export default function HomePage() {
   const dispatch = useDispatch<AppDispatch>();
   const recipes = useSelector(
     (state: { recipes: { recipes: IRecipe[] } }) => state.recipes.recipes
   );
-
-  const [sortedRecipes, setSortedRecipes] = useState<IRecipe[]>([]);
-  const [activeCategory, setActiveCategory] = useState<string>("");
-
+  const category = useSelector(
+    (state: { recipes: { category: "lunch" | "breakfast" | "dinner" } }) =>
+      state.recipes.category
+  );
   useEffect(() => {
-    dispatch(fetchRecipes());
-    setActiveCategory("breakfast");
+    dispatch(fetchRecipes(category));
   }, []);
-
-  useEffect(() => {
-    const newRecipes = recipes.filter(
-      (recipe: IRecipe) => recipe.category == activeCategory
-    );
-    setSortedRecipes(newRecipes);
-    console.log(newRecipes);
-  }, [activeCategory]);
 
   return (
     <div className={s.home_page}>
@@ -38,40 +29,40 @@ export default function HomePage() {
             <button
               type="button"
               className={
-                activeCategory == "breakfast"
+                category === "breakfast"
                   ? s.recipe_category_active
                   : s.recipe_category
               }
-              onClick={() => setActiveCategory("breakfast")}
+              onClick={() => dispatch(fetchRecipes("breakfast"))}
             >
               Breakfast
             </button>
             <button
               type="button"
               className={
-                activeCategory == "lunch"
+                category === "lunch"
                   ? s.recipe_category_active
                   : s.recipe_category
               }
-              onClick={() => setActiveCategory("lunch")}
+              onClick={() => dispatch(fetchRecipes("lunch"))}
             >
               Lunch
             </button>
             <button
               type="button"
               className={
-                activeCategory == "dinner"
+                category === "dinner"
                   ? s.recipe_category_active
                   : s.recipe_category
               }
-              onClick={() => setActiveCategory("dinner")}
+              onClick={() => dispatch(fetchRecipes("dinner"))}
             >
               Dinner
             </button>
           </div>
           <div className={s.recipe_cards}>
-            {sortedRecipes.length > 0 &&
-              sortedRecipes.map((recipe) => (
+            {recipes.length > 0 &&
+              recipes.map((recipe) => (
                 <RecipeCard recipe={recipe} key={recipe.id} />
               ))}
           </div>

@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { logout } from "../../redux/reducers/userSlice";
 import { useDispatch } from "react-redux";
 import React from "react";
@@ -20,12 +20,14 @@ const Navbar: React.FC = () => {
 
   return (
     <div className={s.navbar}>
-      <div className={s.cooks_corner_link}><CooksCornerLink to={"/"} /></div>
+      <div className={s.cooks_corner_link}>
+        {/* <CooksCornerLink to={"/"} /> */}
+      </div>
       <div className={s.navbar_links}>
         <div className={s.navbar_links_top}>
-          <HomeLink to={"/"}/>
-          <ProfileLink to={"/profile"}/>
-          <SearchLink to={"/search"}/>
+          <HomeLink to={"/"} /> 
+          <SearchLink to={"/search"} />
+          <ProfileLink to={"/profile"} />
           <img
             src={logout_link}
             alt="logout_link"

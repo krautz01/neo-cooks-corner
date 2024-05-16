@@ -1,0 +1,48 @@
+@import "../../scss/App.scss";
+
+.search_page {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2.5rem 2rem 0 2rem;
+  text-align: center;
+  button {
+    width: 222px;
+    height: 44px;
+    padding: 4px 48px 4px 48px;
+    border-radius: 22px;
+    background: $Primary;
+  }
+  .search_input_block {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    button {
+      position: absolute;
+      height: 100%;
+      width: 56px;
+      background: none;
+      border: none;
+      margin-right: 0rem;
+      display: flex;
+      align-items: center;
+      img {
+        width: 1.3rem;
+        height: 1.3rem;
+      }
+    }
+  }
+  .search_recipes {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+}

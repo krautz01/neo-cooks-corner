@@ -6,28 +6,39 @@ interface IRecipeState {
   recipes: Array<IRecipe>;
   status: string;
   error: string | null;
+  category: "lunch" | "breakfast" | "dinner";
 }
 
 const initialState: IRecipeState = {
   recipes: [],
   status: "idle",
   error: null,
+  category: "breakfast",
 };
 
 export const fetchRecipes = createAsyncThunk(
   "recipes/fetchRecipes",
-  async function () {
+  async function (category: "lunch" | "breakfast" | "dinner") {
     try {
       /* const response = await fetch("../../utils/apiData.json");
       const data = await response.json(); */
-      const data = apiData;
-      return data;
+      const data = apiData.filter(
+        (recipe: IRecipe) => recipe.category === category
+      );
+      return { recipes: data, category: category };
     } catch (error) {
       // Обработка ошибок, если не удается загрузить данные
       throw Error("Failed to fetch recipes.");
     }
   }
 );
+
+/* export const setCategory = createAsyncThunk(
+  "category/setCategory",
+  async function (category){
+    await fetchRecipes(category)
+  }
+) */
 
 export const recipeSlice = createSlice({
   name: "recipes",
@@ -36,6 +47,10 @@ export const recipeSlice = createSlice({
     addRecipe: (state, action) => {
       state.recipes.push(action.payload);
     },
+    /* setCategory: (state, action) => {
+      state.category = action.payload;
+      fetchRecipes(action.payload);
+    }, */
   },
   extraReducers: (builder) => {
     builder
@@ -46,7 +61,8 @@ export const recipeSlice = createSlice({
       .addCase(fetchRecipes.fulfilled, (state, action) => {
         state.status = "resolved";
         state.error = null;
-        state.recipes = action.payload;
+        state.recipes = action.payload.recipes;
+        state.category = action.payload.category;
       })
       .addCase(fetchRecipes.rejected, (state, action) => {
         state.status = "failed";

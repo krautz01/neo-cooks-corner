@@ -7,6 +7,7 @@ interface IUserDataState {
   userId: number;
   username: string;
   email: string;
+  
 }
 
 const initialState: IUserDataState = {
