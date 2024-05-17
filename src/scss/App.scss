@@ -104,6 +104,9 @@ body {
         font-size: 25px;
         line-height: 37.5px;
       }
+      h2 {
+        font-size: (22/16) * 1rem;
+      }
       button,
       input {
         height: 44px;
@@ -116,6 +119,7 @@ body {
       .pages {
         grid-row: 1;
         grid-column: 1;
+      /*   background: #ffffff; */
       }
 
       .navbar {

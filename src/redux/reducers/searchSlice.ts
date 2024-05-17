@@ -31,8 +31,8 @@ export const searchRecipes = createAsyncThunk(
       const data = response.data;
       const newData = data.filter((recipe: IRecipe) =>
         recipe.title.includes(searchTerm)) */
-      const data = apiData.filter((recipe: IRecipe) =>
-        recipe.title.includes(searchTerm)
+      const data = apiData.filter(
+        (recipe: IRecipe) => recipe.title.includes(searchTerm)
       );
       return { recipes: data, searchTerm: searchTerm };
     } catch (error) {

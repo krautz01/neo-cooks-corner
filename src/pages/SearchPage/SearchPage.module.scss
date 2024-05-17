@@ -1,19 +1,29 @@
 @import "../../scss/App.scss";
 
 .search_page {
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-  padding: 2.5rem 2rem 0 2rem;
+  padding: 2.5rem 2rem 3.5rem 2rem;
   text-align: center;
-  button {
-    width: 222px;
-    height: 44px;
-    padding: 4px 48px 4px 48px;
-    border-radius: 22px;
-    background: $Primary;
-    border: none;
+  .search_types {
+    width: 100%;
+    height: 5rem;
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: $Secondary;
+    .search_type_button {
+      width: 10rem;
+      padding: 4px 48px 4px 48px;
+      border-radius: 22px;
+      background: $Primary;
+      border: none;
+      color: #ffffff;
+    }
   }
   .search_input_block {
     width: 100%;
@@ -24,7 +34,7 @@
     .search_button {
       position: absolute;
       height: 100%;
-      width: 56px;
+      padding: 0 19px 0 0;
       background: none;
       border: none;
       margin-right: 0rem;
@@ -42,5 +52,37 @@
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+    justify-content: center;
+  }
+  .add_recipe_button {
+    width: 30rem;
+    display: flex;
+    align-items: center;
+    button {
+      color: #ffffff;
+      gap: 1rem;
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+}
+
+@media screen and (width<426px) {
+  .search_page {
+    padding: 4rem 20px 20px 20px;
+    h2 {
+    }
+    .search_types {
+      .search_type_button {
+        height: 36px;
+        width: 10rem;
+      }
+    }
+    .search_recipes {
+      flex-direction: column;
+    }
+    .add_recipe_button {
+      width: 100%;
+    }
   }
 }
