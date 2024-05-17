@@ -19,22 +19,28 @@ function App() {
     <>
       {isAuth ? (
         <>
-          <Navbar />
-          <Routes>
-            <Route path={"/"} element={<HomePage />} />
-            <Route path={"/recipe/:id"} element={<DetailRecipePage />} />
-            <Route path={"/recipe/:id/author"} element={<AuthorPage />} />
-            <Route path={"/search"} element={<SearchPage />} />
-            <Route path={"/profile"} element={<ProfilePage />} />
-            <Route path={"/not-found"} element={<NotFoundPage />} />
-          </Routes>
+          <div className="navbar">
+            <Navbar />
+          </div>
+          <div className="pages">
+            <Routes>
+              <Route path={"/"} element={<HomePage />} />
+              <Route path={"/recipe/:id"} element={<DetailRecipePage />} />
+              <Route path={"/recipe/:id/author"} element={<AuthorPage />} />
+              <Route path={"/search"} element={<SearchPage />} />
+              <Route path={"/profile"} element={<ProfilePage />} />
+              <Route path={"/not-found"} element={<NotFoundPage />} />
+            </Routes>
+          </div>
         </>
       ) : (
-        <Routes>
-          <Route path={"/"} element={<GreetingPage />} />
-          <Route path={"/login"} element={<LoginPage />} />
-          <Route path={"/register"} element={<RegisterPage />} />
-        </Routes>
+        <div className="authpages">
+          <Routes>
+            <Route path={"/"} element={<GreetingPage />} />
+            <Route path={"/login"} element={<LoginPage />} />
+            <Route path={"/register"} element={<RegisterPage />} />
+          </Routes>
+        </div>
       )}
     </>
   );

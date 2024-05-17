@@ -6,10 +6,13 @@ interface ButtonProps {
 }
 
 export const Button = styled.button<ButtonProps>`
-  width: 30rem;
-  height: 3.5rem;
-  padding: 8px 127px 8px 127px;
+  width: 100%;
   border-radius: 1.75rem;
   border: none;
   background: #fa9e31;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
 `;

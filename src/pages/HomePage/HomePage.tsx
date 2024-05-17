@@ -19,6 +19,8 @@ export default function HomePage() {
     dispatch(fetchRecipes(category));
   }, []);
 
+  const isSmallScreen = window.innerWidth < 426;
+
   return (
     <div className={s.home_page}>
       <div className={s.home_page_content}>
@@ -62,9 +64,11 @@ export default function HomePage() {
           </div>
           <div className={s.recipe_cards}>
             {recipes.length > 0 &&
-              recipes.map((recipe) => (
-                <RecipeCard recipe={recipe} key={recipe.id} />
-              ))}
+              recipes
+                .slice(0, isSmallScreen ? 4 : 12)
+                .map((recipe) => (
+                  <RecipeCard recipe={recipe} key={recipe.id} />
+                ))}
           </div>
         </div>
       </div>

@@ -11,7 +11,7 @@ interface IUserDataState {
 }
 
 const initialState: IUserDataState = {
-  isAuth: true,
+  isAuth: false,
   accessToken: "",
   refreshToken: "",
   userId: 0,

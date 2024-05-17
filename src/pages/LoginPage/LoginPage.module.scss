@@ -31,6 +31,7 @@
         flex-direction: column;
         gap: 1rem;
         .input_wrapper {
+          height: 3.5rem;
           position: relative;
           display: flex;
           justify-content: flex-end;
@@ -47,6 +48,10 @@
               height: 1.5rem;
             }
           }
+          img {
+            width: 1.5rem;
+            height: 1.5rem;
+          }
         }
       }
       label {
@@ -55,6 +60,32 @@
       }
       .valid_error {
         color: red;
+      }
+      button{
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+@media screen and (width < 426px) {
+  .login_page {
+    .login_page_greeting {
+      padding: 0 20px 0 20px;
+      align-items: flex-start;
+      h1 {
+        font-size: 25px;
+      }
+    }
+    .login_form_wrapper {
+      padding: 0 20px 0 20px;
+      form {
+        width: 100%;
+        .input_block {
+          .input_wrapper {
+            height: (44/16) * 1rem;
+          }
+        }
       }
     }
   }

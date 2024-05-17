@@ -7,8 +7,8 @@ import s from "./DetailRecipePage.module.scss";
 import zozo from "../../assets/images/recipe_photo.png";
 import back_button from "../../assets/icons/back_button.svg";
 import clock from "../../assets/icons/clock_logo.svg";
-import like_icon from "../../assets/icons/RecipeIcons/like_icon.svg";
-import saving_icon from "../../assets/icons/RecipeIcons/saving_icon.svg";
+import like_icon from "../../assets/icons/RecipeIcons/black/like_icon.svg";
+import saving_icon from "../../assets/icons/RecipeIcons/black/saved_icon.svg";
 
 export default function DetailRecipePage() {
   const { id } = useParams();
