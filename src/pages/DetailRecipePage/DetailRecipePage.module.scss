@@ -15,8 +15,9 @@
     top: 2rem;
     left: 2rem;
   }
-  img {
+  .recipe_photo {
     width: 100%;
+    height: 21rem;
   }
   .recipe_content_wrapper {
     width: (982/1440) * 100 * 1%;
@@ -94,6 +95,37 @@
           align-items: center;
           border-bottom: 1px solid $Input-background;
           height: 34px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (width<426px) {
+  .recipe_page {
+    gap: 0;
+    .back_button {
+      position: absolute;
+      z-index: 1;
+    }
+    .recipe_photo {
+      height: 15rem;
+      position: absolute;
+      object-fit: cover;
+    }
+    .recipe_content_wrapper {
+      background: #ffffff;
+      top: 225px;
+      left: 0;
+      position: absolute;
+      width: 100%;
+      border-radius: 20px 20px 0px 0px;
+      padding: 25px 20px 0 20px;
+      gap: 1rem;
+      .recipe_raitings {
+        img {
+          width: 1.5rem;
+          height: 1.5rem;
         }
       }
     }
