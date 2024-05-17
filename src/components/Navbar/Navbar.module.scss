@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #ffffff;
+  background: $Input-background;
   .cooks_corner_link {
     height: 98px;
     border-bottom: 1px solid $Text-faded;
@@ -31,6 +31,7 @@
   .navbar {
     flex-direction: row;
     align-items: center;
+    background: #ffffff;
     .cooks_corner_link {
       display: none;
     }

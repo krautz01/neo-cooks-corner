@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { SearchInput } from "../../ui/SearchInput";
-import { IRecipe } from "../../interfaces/IRecipe";
-import search_icon from "../../assets/icons/search_icon.svg";
+import { useDebounce } from "@hooks/useDebounce";
+import { SearchInput } from "@ui/SearchInput";
+import { IRecipe } from "@interfaces/IRecipe";
+import { searchRecipes } from "@redux/reducers/searchSlice";
+import { AppDispatch } from "@redux/store";
+import RecipeCard from "@components/RecipeCard/RecipeCard";
+import search_icon from "@assets/icons/search_icon.svg";
+import search_delete_icon from "@assets/icons/search_delete_icon.svg";
 import s from "./SearchPage.module.scss";
-import { searchRecipes } from "../../redux/reducers/searchSlice";
-import { AppDispatch } from "../../redux/store";
-import { useDebounce } from "../../hooks/useDebounce";
 
 const SearchPage: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -38,18 +40,30 @@ const SearchPage: React.FC = () => {
           onChange={(e) => handleFindRecipes(e)}
         />
         {searchTerm === "" ? (
-          <img src={search_icon} alt="search_icon" />
+          <div className={s.search_button}>
+            <img src={search_icon} alt="search_icon" />
+          </div>
         ) : (
-          <button type="submit" onClick={() => setSearchTerm("")}>
-            X
+          <button
+            className={s.search_button}
+            type="submit"
+            onClick={() => setSearchTerm("")}
+          >
+            <img src={search_delete_icon} alt="search_icon" />
           </button>
         )}
       </form>
       <div className={s.search_recipes}>
         {recipes.length ? (
-          recipes.map((recipe) => <div key={recipe.id}>sddds</div>)
+          recipes.map((recipe) => (
+            <RecipeCard
+              recipe={recipe}
+              key={recipe.id}
+              isSearchRecipeCard={true}
+            />
+          ))
         ) : (
-          <div>No results</div>
+          <div>No results found</div>
         )}
       </div>
     </div>
