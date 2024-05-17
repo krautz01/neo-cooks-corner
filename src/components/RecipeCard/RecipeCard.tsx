@@ -21,25 +21,25 @@ const RecipeCard: React.FC<IRecipeCardProps> = ({
   const like = isSearchRecipeCard ? like_icon_black : like_icon_white;
   const save = isSearchRecipeCard ? saved_icon_black : saved_icon_white;
   return (
-    <Link to={`/recipe/${recipe.id}/`} key={recipe.id}>
-      <div className={s.recipe_card}>
+    <div className={s.recipe_card}>
+      <Link to={`/recipe/${recipe.id}/`}>
         <img className={s.recipe_photo} src={zozo} alt="" />
-        <div className={s.recipe_card_info}>
-          <p className={s.recipe_name}>{recipe.title}</p>
-          <p className={s.recipe_author}>by {recipe.author}</p>
-          <div className={s.recipe_card_raitings}>
-            <p>
-              <img src={like} alt="like" />
-              {recipe.likes}
-            </p>
-            <p>
-              <img src={save} alt="save" />
-              {recipe.savedCount}
-            </p>
-          </div>
+      </Link>
+      <div className={s.recipe_card_info}>
+        <p className={s.recipe_name}>{recipe.title}</p>
+        <p className={s.recipe_author}>by {recipe.author}</p>
+        <div className={s.recipe_card_raitings}>
+          <p>
+            <img src={like} alt="like" />
+            {recipe.likes}
+          </p>
+          <p>
+            <img src={save} alt="save" />
+            {recipe.savedCount}
+          </p>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 export default RecipeCard;

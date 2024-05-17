@@ -70,7 +70,7 @@ const SearchPage: React.FC = () => {
           <p>No results found</p>
         ) : (
           recipes
-            .slice(0, 7)
+            .slice(0, 8)
             .map((recipe) =>
               IsSmallScreen ? (
                 <MobileSearchRecipeCard
@@ -89,7 +89,18 @@ const SearchPage: React.FC = () => {
             )
         )}
       </div>
-      <div className={s.add_recipe_button}>
+      <div
+        className={s.add_recipe_button}
+        style={
+          IsSmallScreen
+            ? recipes.length === 0
+              ? { marginTop: "118%" }
+              : {}
+            : recipes.length === 0
+            ? { marginTop: "48.5%" }
+            : { marginTop: "9%" }
+        }
+      >
         <Button type="button">
           <img src={add_recipe_icon} alt="" />
           Add your recipe
