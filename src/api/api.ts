@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 
 const instance = axios.create({
-  baseURL: "", // URL
+  baseURL: "http://165.227.147.154:8081/api/users/auth", // URL
   headers: {
     Accept: "*/*",
     "Content-Type": "application/json",

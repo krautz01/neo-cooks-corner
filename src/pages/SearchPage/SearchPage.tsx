@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useDebounce } from "@hooks/useDebounce";
 import { SearchInput } from "@ui/SearchInput";
 import { IRecipe } from "@interfaces/IRecipe";
-import { searchRecipes } from "@redux/reducers/searchSlice";
+import { searchRecipes } from "@redux/reducers/searchSlice/searchSlice";
 import { AppDispatch } from "@redux/store";
 import { Button } from "@ui/Button";
 import RecipeCard from "@components/RecipeCard/RecipeCard";

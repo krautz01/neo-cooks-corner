@@ -8,6 +8,13 @@
   flex-direction: column;
   align-items: center;
   gap: 3rem;
+
+  .profile_page_top {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
   button {
     border: none;
   }

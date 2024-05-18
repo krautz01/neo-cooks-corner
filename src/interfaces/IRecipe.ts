@@ -4,13 +4,18 @@ export interface IIngredients {
 }
 
 export interface IRecipe {
-  photo: string;
-  title: string;
-  likes: number;
-  category: string;
-  author: string;
-  savedCount: number;
   id: number;
-  cookingLink: string;
+  title: string;
+  description: string;
+  photo: string;
   ingredients: Array<IIngredients>;
+  difficulty: string;
+  category: string;
+  preparationTime: string;
+  youtubeLink: string;
+  author: string;
+  userId: number;
+  userName: string;
+  likesCount: number;
+  savesCount: number;
 }

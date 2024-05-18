@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchRecipes } from "../../redux/reducers/recipeSlice";
+import { fetchRecipes } from "../../redux/reducers/recipeSlice/recipeSlice";
 import { AppDispatch } from "../../redux/store";
 import { IRecipe } from "../../interfaces/IRecipe";
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
@@ -12,7 +12,7 @@ export default function HomePage() {
     (state: { recipes: { recipes: IRecipe[] } }) => state.recipes.recipes
   );
   const category = useSelector(
-    (state: { recipes: { category: "lunch" | "breakfast" | "dinner" } }) =>
+    (state: { recipes: { category: "LUNCH" | "BREAKFAST" | "DINNER" } }) =>
       state.recipes.category
   );
   useEffect(() => {
@@ -31,33 +31,33 @@ export default function HomePage() {
             <button
               type="button"
               className={
-                category === "breakfast"
+                category === "BREAKFAST"
                   ? s.recipe_category_active
                   : s.recipe_category
               }
-              onClick={() => dispatch(fetchRecipes("breakfast"))}
+              onClick={() => dispatch(fetchRecipes("BREAKFAST"))}
             >
               Breakfast
             </button>
             <button
               type="button"
               className={
-                category === "lunch"
+                category === "LUNCH"
                   ? s.recipe_category_active
                   : s.recipe_category
               }
-              onClick={() => dispatch(fetchRecipes("lunch"))}
+              onClick={() => dispatch(fetchRecipes("LUNCH"))}
             >
               Lunch
             </button>
             <button
               type="button"
               className={
-                category === "dinner"
+                category === "DINNER"
                   ? s.recipe_category_active
                   : s.recipe_category
               }
-              onClick={() => dispatch(fetchRecipes("dinner"))}
+              onClick={() => dispatch(fetchRecipes("DINNER"))}
             >
               Dinner
             </button>

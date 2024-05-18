@@ -1,20 +1,37 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { IRecipe } from "@interfaces/IRecipe";
 import s from "./ProfilePage.module.scss";
 import user from "@assets/images/user.png";
 import { AppDispatch } from "@redux/store";
-import { IRecipe } from "@interfaces/IRecipe";
 import RecipeCard from "@components/RecipeCard/RecipeCard";
+import logout_icon from "@assets/icons/NavbarIcons/logout_icon.svg";
+import { logOut } from "@redux/reducers/authSlice/authSlice";
 
 const ProfilePage: React.FC = () => {
-  const dispatch = useDispatch<AppDispatch>;
+  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
   const recipes = useSelector(
     (state: { recipes: { recipes: IRecipe[] } }) => state.recipes.recipes
   );
 
+  const handleLogOut = () => {
+    navigate("/");
+    dispatch(logOut());
+  };
+
   const isSmallScreen = window.innerWidth < 426;
+
   return (
     <div className={s.profile_page}>
-      <h2>Profile</h2>
+      <div className={s.profile_page_top}>
+        <h2>Profile</h2>
+        {isSmallScreen ? (
+          <img src={logout_icon} alt="logout" onClick={() => handleLogOut()} />
+        ) : (
+          ""
+        )}
+      </div>
       <div className={s.user_block}>
         <img src={user} alt="" className={s.user_photo} />
         <div className={s.user_raitings}>

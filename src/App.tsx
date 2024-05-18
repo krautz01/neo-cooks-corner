@@ -17,7 +17,7 @@ function App() {
 
   return (
     <>
-      {isAuth ? (
+      {isAuth  ? (
         <>
           <div className="navbar">
             <Navbar />
@@ -26,7 +26,7 @@ function App() {
             <Routes>
               <Route path={"/"} element={<HomePage />} />
               <Route path={"/recipe/:id"} element={<DetailRecipePage />} />
-              <Route path={"/recipe/:id/author"} element={<AuthorPage />} />
+              <Route path={"/author/:id"} element={<AuthorPage />} />
               <Route path={"/search"} element={<SearchPage />} />
               <Route path={"/profile"} element={<ProfilePage />} />
               <Route path={"/not-found"} element={<NotFoundPage />} />

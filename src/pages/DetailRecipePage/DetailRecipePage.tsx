@@ -30,26 +30,32 @@ export default function DetailRecipePage() {
           <Link to={"/"} className={s.back_button}>
             <img src={back_button} alt="" />
           </Link>
-          <img className={s.recipe_photo} src={zozo} alt="" />
+          <img
+            className={s.recipe_photo}
+            src={detailRecipe.photo || zozo}
+            alt=""
+          />
           <div className={s.recipe_content_wrapper}>
             <div className={s.recipe_author_block}>
               <h2>{detailRecipe.title}</h2>
-              <p className={s.recipe_author}>by {detailRecipe.author}</p>
+              <Link to={`/author/${detailRecipe.userId}`}>
+                <p className={s.recipe_author}>by {detailRecipe.userName}</p>
+              </Link>
             </div>
             <div className={s.recipe_cooking}>
               <div className={s.recipe_cooking_time}>
-                <img src={clock} alt="" /> <p>20-30 min</p>
+                <img src={clock} alt="" /> <p>{detailRecipe.preparationTime}</p>
               </div>
-              <div className={s.recipe_cooking_level}>Easy</div>
+              <div className={s.recipe_cooking_level}>{detailRecipe.difficulty}</div>
             </div>
             <div className={s.recipe_raitings}>
               <div className={s.recipe_raiting_likes}>
                 <img src={like_icon} alt="" />
-                {detailRecipe.likes} likes
+                {detailRecipe.likesCount} likes
               </div>
               <div>
                 <img src={saving_icon} alt="" />
-                {detailRecipe.savedCount} saves
+                {detailRecipe.savesCount} saves
               </div>
             </div>
             <div className={s.recipe_desc}>
@@ -58,19 +64,19 @@ export default function DetailRecipePage() {
                 You pick up your palette knife and then work that into. Give
                 your meat a good old rub. That’s it, nice and hot, hot and spicy
                 meat.{" "}
-                <a href={detailRecipe.cookingLink} target="_blank">
+                <a href={detailRecipe.youtubeLink} target="_blank">
                   He-he boy...
                 </a>
                 You pick up your palette knife and then work that into. Give
                 your meat a good old rub. That’s it, nice and hot, hot and spicy
                 meat.{" "}
-                <a href={detailRecipe.cookingLink} target="_blank">
+                <a href={detailRecipe.youtubeLink} target="_blank">
                   He-he boy...
                 </a>
                 You pick up your palette knife and then work that into. Give
                 your meat a good old rub. That’s it, nice and hot, hot and spicy
                 meat.
-                <a href={detailRecipe.cookingLink} target="_blank">
+                <a href={detailRecipe.youtubeLink} target="_blank">
                   He-he boy...
                 </a>
               </p>
@@ -84,18 +90,6 @@ export default function DetailRecipePage() {
                     <p>{ingredient.quantity}(kg/g)</p>
                   </li>
                 ))}
-                {/* <li>
-                  <p>Chicken</p>
-                  <p></p>
-                </li>
-                <li>
-                  <p>Chicken</p>
-                  <p>2kg</p>
-                </li>
-                <li>
-                  <p>Chicken</p>
-                  <p>2kg</p>
-                </li> */}
               </ul>
             </div>
           </div>

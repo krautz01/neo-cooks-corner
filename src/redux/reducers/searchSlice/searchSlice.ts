@@ -1,14 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { IRecipe } from "../../interfaces/IRecipe";
-import apiData from "../../utils/apiData.json";
+import { ISearchState } from "./interface";
 import axios from "axios";
-
-interface ISearchState {
-  recipes: Array<IRecipe>;
-  status: string;
-  error: string | null;
-  searchTerm: string;
-}
 
 const initialState: ISearchState = {
   recipes: [],
@@ -20,24 +12,19 @@ const initialState: ISearchState = {
 export const searchRecipes = createAsyncThunk(
   "search/searchRecipes",
   async function (searchTerm: string) {
-    if (searchTerm === "") {
-      return {
-        recipes: [],
-        searchTerm: searchTerm,
-      };
-    }
+    const token = localStorage.getItem("token");
     try {
-      /* const response = await axios.get("../../utils/apiData.json");
-      const data = response.data;
-      const newData = data.filter((recipe: IRecipe) =>
-        recipe.title.includes(searchTerm)) */
-      const data = apiData.filter(
-        (recipe: IRecipe) => recipe.title.includes(searchTerm)
+      const response = await axios.get(
+        `http://165.227.147.154:8081/api/recipes/search?title=${searchTerm}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
-      return { recipes: data, searchTerm: searchTerm };
+      return { recipes: response.data, searchTerm: searchTerm }; // action payload
     } catch (error) {
-      // Обработка ошибок, если не удается загрузить данные
-      throw Error("Failed to fetch recipes.");
+      throw Error("Failed to fetch recipes");
     }
   }
 );
@@ -60,7 +47,7 @@ export const searchSlice = createSlice({
       })
       .addCase(searchRecipes.rejected, (state, action) => {
         state.status = "failed";
-        /* state.error = action.error.message; */
+        state.error = action.payload as string;
       });
   },
 });

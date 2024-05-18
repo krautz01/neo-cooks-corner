@@ -23,19 +23,24 @@ const RecipeCard: React.FC<IRecipeCardProps> = ({
   return (
     <div className={s.recipe_card}>
       <Link to={`/recipe/${recipe.id}/`}>
-        <img className={s.recipe_photo} src={zozo} alt="" />
+        <img className={s.recipe_photo} src={recipe.photo} alt="" />
       </Link>
       <div className={s.recipe_card_info}>
         <p className={s.recipe_name}>{recipe.title}</p>
-        <p className={s.recipe_author}>by {recipe.author}</p>
+        <Link to={`/author/${recipe.userId}`}>
+          <p className={s.recipe_author}>
+            by
+            {recipe.userName}
+          </p>
+        </Link>
         <div className={s.recipe_card_raitings}>
           <p>
             <img src={like} alt="like" />
-            {recipe.likes}
+            {recipe.likesCount}
           </p>
           <p>
             <img src={save} alt="save" />
-            {recipe.savedCount}
+            {recipe.savesCount}
           </p>
         </div>
       </div>
