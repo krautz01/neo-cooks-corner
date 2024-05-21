@@ -1,14 +1,14 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { IRecipe } from "../../interfaces/IRecipe";
+import { IRecipe } from "@interfaces/IRecipe";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import s from "./DetailRecipePage.module.scss";
-import zozo from "../../assets/images/recipe_photo.png";
-import back_button from "../../assets/icons/back_button.svg";
-import clock from "../../assets/icons/clock_logo.svg";
-import like_icon from "../../assets/icons/RecipeIcons/black/like_icon.svg";
-import saving_icon from "../../assets/icons/RecipeIcons/black/saved_icon.svg";
+import zozo from "@assets/images/recipe_photo.png";
+import back_button from "@assets/icons/back_button.svg";
+import clock from "@assets/icons/clock_logo.svg";
+import like_icon from "@assets/icons/RecipeIcons/black/like_icon.svg";
+import saving_icon from "@assets/icons/RecipeIcons/black/saved_icon.svg";
 
 export default function DetailRecipePage() {
   const { id } = useParams();
@@ -46,7 +46,9 @@ export default function DetailRecipePage() {
               <div className={s.recipe_cooking_time}>
                 <img src={clock} alt="" /> <p>{detailRecipe.preparationTime}</p>
               </div>
-              <div className={s.recipe_cooking_level}>{detailRecipe.difficulty}</div>
+              <div className={s.recipe_cooking_level}>
+                {detailRecipe.difficulty}
+              </div>
             </div>
             <div className={s.recipe_raitings}>
               <div className={s.recipe_raiting_likes}>

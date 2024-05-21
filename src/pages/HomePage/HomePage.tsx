@@ -17,6 +17,7 @@ export default function HomePage() {
   );
   useEffect(() => {
     dispatch(fetchRecipes(category));
+    console.log(recipes);
   }, []);
 
   const isSmallScreen = window.innerWidth < 426;

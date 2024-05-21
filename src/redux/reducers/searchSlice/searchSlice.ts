@@ -12,8 +12,8 @@ const initialState: ISearchState = {
 export const searchRecipes = createAsyncThunk(
   "search/searchRecipes",
   async function (searchTerm: string) {
-    const token = localStorage.getItem("token");
     try {
+      const token = localStorage.getItem("token");
       const response = await axios.get(
         `http://165.227.147.154:8081/api/recipes/search?title=${searchTerm}`,
         {

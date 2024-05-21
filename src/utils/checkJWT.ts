@@ -5,7 +5,7 @@ interface JwtPayload {
   [key: string]: any; // Для включения дополнительных полей
 }
 
-export const isTokenExpired = (token: string): boolean => {
+export const isTokenExpired = (token: string ): boolean => {
   try {
     const decoded = jwt.decode(token) as JwtPayload | null;
     if (!decoded || !decoded.exp) {

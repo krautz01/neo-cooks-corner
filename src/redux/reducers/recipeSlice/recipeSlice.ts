@@ -12,9 +12,8 @@ const initialState: IRecipesState = {
 export const fetchRecipes = createAsyncThunk(
   "recipes/fetchRecipes",
   async function (category: "LUNCH" | "BREAKFAST" | "DINNER") {
-    const token = localStorage.getItem("token");
-    console.log(token)
     try {
+      const token = localStorage.getItem("token");
       const response = await axios.get(
         `http://165.227.147.154:8081/api/recipes?category=${category}`,
         {
@@ -23,7 +22,7 @@ export const fetchRecipes = createAsyncThunk(
           },
         }
       );
-      return response.data;
+      return { recipes: response.data, category: category };
     } catch (error) {
       throw Error("Failed to fetch recipes");
     }
@@ -35,7 +34,7 @@ export const recipeSlice = createSlice({
   initialState,
   reducers: {
     addRecipe: (state, action) => {
-      state.recipes.push(action.payload);
+      state.recipes = action.payload;
     },
   },
   extraReducers: (builder) => {

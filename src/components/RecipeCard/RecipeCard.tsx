@@ -20,10 +20,13 @@ const RecipeCard: React.FC<IRecipeCardProps> = ({
   const s = isSearchRecipeCard ? b : a;
   const like = isSearchRecipeCard ? like_icon_black : like_icon_white;
   const save = isSearchRecipeCard ? saved_icon_black : saved_icon_white;
+
+  const handleSetToLikes = () => {};
+
   return (
     <div className={s.recipe_card}>
       <Link to={`/recipe/${recipe.id}/`}>
-        <img className={s.recipe_photo} src={recipe.photo} alt="" />
+        <img className={s.recipe_photo} src={recipe.photo || zozo} alt="" />
       </Link>
       <div className={s.recipe_card_info}>
         <p className={s.recipe_name}>{recipe.title}</p>
@@ -35,7 +38,7 @@ const RecipeCard: React.FC<IRecipeCardProps> = ({
         </Link>
         <div className={s.recipe_card_raitings}>
           <p>
-            <img src={like} alt="like" />
+            <img src={like} alt="like" onClick={() => handleSetToLikes()} />
             {recipe.likesCount}
           </p>
           <p>

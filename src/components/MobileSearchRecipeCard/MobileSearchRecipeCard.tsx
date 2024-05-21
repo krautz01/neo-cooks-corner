@@ -27,9 +27,9 @@ const MobileSearchRecipeCard: React.FC<IProps> = ({ id, title, photo }) => {
           }}
         >
           <img
-            src={mobile}
+            src={photo || mobile}
             alt="photo"
-            style={{ width: "40px", height: "40px", borderRadius: "8зч" }}
+            style={{ width: "40px", height: "40px", borderRadius: "8px" }}
           />
           <div
             style={{
@@ -38,8 +38,9 @@ const MobileSearchRecipeCard: React.FC<IProps> = ({ id, title, photo }) => {
               fontWeight: "400",
               textAlign: "left",
             }}
-          ></div>
-          {title}
+          >
+            {title}
+          </div>
         </div>
         <Link to={`/recipe/${id}`}>
           View <img src={link_arrow_icon} alt="arrow" />

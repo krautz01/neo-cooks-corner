@@ -59,6 +59,7 @@ export const authSlice = createSlice({
         state.status = "resolved";
         state.error = null;
         state.isAuth = true;
+        localStorage.removeItem("token");
         localStorage.setItem("token", action.payload.token);
         state.user = action.payload.user;
       })
@@ -74,6 +75,7 @@ export const authSlice = createSlice({
         state.status = "resolved";
         state.error = null;
         state.isAuth = true;
+        localStorage.removeItem("token");
         localStorage.setItem("token", action.payload.token);
         state.user = action.payload.user;
       })

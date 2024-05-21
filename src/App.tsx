@@ -17,7 +17,7 @@ function App() {
 
   return (
     <>
-      {isAuth  ? (
+      {isAuth ? (
         <>
           <div className="navbar">
             <Navbar />
