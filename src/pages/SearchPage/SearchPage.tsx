@@ -3,7 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useDebounce } from "@hooks/useDebounce";
 import { SearchInput } from "@ui/SearchInput";
 import { IRecipe } from "@interfaces/IRecipe";
-import { searchRecipes } from "@redux/reducers/searchSlice/searchSlice";
+import {
+  searchChefs,
+  searchRecipes,
+} from "@redux/reducers/searchSlice/searchSlice";
 import { AppDispatch } from "@redux/store";
 import { Button } from "@ui/Button";
 import RecipeCard from "@components/RecipeCard/RecipeCard";
@@ -12,35 +15,52 @@ import add_recipe_icon from "@assets/icons/add_recipe_icon.svg";
 import search_icon from "@assets/icons/search_icon.svg";
 import search_delete_icon from "@assets/icons/search_delete_icon.svg";
 import MobileSearchRecipeCard from "@components/MobileSearchRecipeCard/MobileSearchRecipeCard";
+import { IChef } from "@interfaces/iChef";
 
 const SearchPage: React.FC = () => {
+  const [category, setCategory] = useState("recipes");
+  const [searchTerm, setSearchTerm] = useState("");
+  const IsSmallScreen = window.innerWidth <= 426;
+
   const dispatch = useDispatch<AppDispatch>();
   const recipes = useSelector(
     (state: { search: { recipes: IRecipe[] } }) => state.search.recipes
   );
+  const chefs = useSelector(
+    (state: { search: { chefs: IChef[] } }) => state.search.chefs
+  );
 
   const debouncedSearch = useDebounce((search: string) => {
-    dispatch(searchRecipes(search));
+    if (category === "recipes") {
+      dispatch(searchRecipes(search));
+    } else if (category === "chefs") {
+      dispatch(searchChefs(search));
+    } else {
+      console.log("error searching");
+    }
   });
 
   const handleFindRecipes = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("");
     setSearchTerm(e.target.value);
     debouncedSearch(e.target.value);
   };
-
-  const [searchTerm, setSearchTerm] = useState("");
-  const IsSmallScreen = window.innerWidth <= 426;
-  console.log(IsSmallScreen);
 
   return (
     <div className={s.search_page}>
       <h2>What to eat today?</h2>
       <div className={s.search_types}>
-        <button type="button" className={s.search_type_button}>
+        <button
+          type="button"
+          className={category === "chefs" ? s.search_type_button : ""}
+          onClick={() => setCategory("chefs")}
+        >
           Chefs
         </button>
-        <button type="button" className={s.search_type_button}>
+        <button
+          type="button"
+          className={category === "recipes" ? s.search_type_button : ""}
+          onClick={() => setCategory("recipes")}
+        >
           Recipes
         </button>
       </div>
@@ -66,27 +86,31 @@ const SearchPage: React.FC = () => {
         )}
       </form>
       <div className={s.search_recipes}>
-        {recipes.length === 0 ? (
-          <p>No results found</p>
-        ) : (
-          recipes
-            .slice(0, 8)
-            .map((recipe) =>
-              IsSmallScreen ? (
-                <MobileSearchRecipeCard
-                  key={recipe.id}
-                  id={recipe.id}
-                  title={recipe.title}
-                  photo={recipe.photo}
-                />
-              ) : (
-                <RecipeCard
-                  recipe={recipe}
-                  key={recipe.id}
-                  isSearchRecipeCard={true}
-                />
+        {category === "recipes" ? (
+          recipes.length === 0 ? (
+            <p>No results found</p>
+          ) : (
+            recipes
+              .slice(0, 8)
+              .map((recipe) =>
+                IsSmallScreen ? (
+                  <MobileSearchRecipeCard
+                    key={recipe.id}
+                    id={recipe.id}
+                    title={recipe.title}
+                    photo={recipe.photo}
+                  />
+                ) : (
+                  <RecipeCard
+                    recipe={recipe}
+                    key={recipe.id}
+                    isSearchRecipeCard={true}
+                  />
+                )
               )
-            )
+          )
+        ) : (
+          chefs.slice(0, 8).map((chef) => <div>{chef.name}</div>)
         )}
       </div>
       <div

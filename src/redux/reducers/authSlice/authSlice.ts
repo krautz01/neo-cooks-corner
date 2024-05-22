@@ -8,7 +8,7 @@ const initialState: IAuthState = {
   isAuth: false,
   status: null,
   error: null,
-  user: [],
+  user: null,
 };
 
 export const registerUser = createAsyncThunk(

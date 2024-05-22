@@ -1,26 +1,29 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { IRecipe } from "@interfaces/IRecipe";
-import s from "./ProfilePage.module.scss";
-import user from "@assets/images/user.png";
+import { useAppSelector } from "@redux/hooks";
 import { AppDispatch } from "@redux/store";
+import { logOut } from "@redux/reducers/authSlice/authSlice";
+import { useState } from "react";
+import userPhoto from "@assets/images/user.png";
 import RecipeCard from "@components/RecipeCard/RecipeCard";
 import logout_icon from "@assets/icons/NavbarIcons/logout_icon.svg";
-import { logOut } from "@redux/reducers/authSlice/authSlice";
+import s from "./ProfilePage.module.scss";
 
 const ProfilePage: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
-  const recipes = useSelector(
-    (state: { recipes: { recipes: IRecipe[] } }) => state.recipes.recipes
-  );
+  const user = useAppSelector((state) => state.auth.user);
+  const [category, setCategoty] = useState("");
+  const isSmallScreen = window.innerWidth < 426;
 
   const handleLogOut = () => {
     navigate("/");
     dispatch(logOut());
   };
 
-  const isSmallScreen = window.innerWidth < 426;
+  if (!user) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className={s.profile_page}>
@@ -33,27 +36,26 @@ const ProfilePage: React.FC = () => {
         )}
       </div>
       <div className={s.user_block}>
-        <img src={user} alt="" className={s.user_photo} />
+        <img src={userPhoto} alt="" className={s.user_photo} />
         <div className={s.user_raitings}>
           <div className={s.user_raiting}>
-            <h2>29</h2>
+            <h2>{user.recipes.length}</h2>
             <p>Recipe</p>
           </div>
           <div className={s.user_raiting}>
-            <h2>144</h2>
+            <h2>{user.followersCount}</h2>
             <p>Followers</p>
           </div>
           <div className={s.user_raiting}>
-            <h2>100</h2>
+            <h2>{user.followingsCount}</h2>
             <p>Following</p>
           </div>
         </div>
         <div className={s.user_info_bottom}>
           <div className={s.user_title}>
-            <p className={s.user_title_name}>Sarthak Ranjan Hota</p>
+            <p className={s.user_title_name}>{user.name}</p>
             <p className={s.user_title_bio}>
-              I'm a passionate chef who loves creating delicious dishes with
-              flair.
+              {user.description || "No description"}
             </p>
           </div>
           <button className={s.manage_button} type="button">
@@ -63,14 +65,38 @@ const ProfilePage: React.FC = () => {
       </div>
       <div className={s.user_recipes_block}>
         <div className={s.user_recipes_type_buttons}>
-          <button type="button">My recipe</button>
-          <button type="button">Saved recipe</button>
+          <button
+            type="button"
+            onClick={() => {
+              setCategoty("my recipes");
+            }}
+            style={category === "my recipes" ? { color: "red" } : {}}
+          >
+            My recipe
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              setCategoty("my saves");
+            }}
+            style={category === "my saves" ? { color: "red" } : {}}
+          >
+            Saved recipe
+          </button>
         </div>
         <div className={s.user_recipes}>
-          {recipes.length === 0 ? (
-            <div></div>
+          {category === "my recipes" ? (
+            user.recipes.length === 0 ? (
+              <div>No own recipes</div>
+            ) : (
+              user.recipes
+                .slice(0, isSmallScreen ? 4 : 8)
+                .map((recipe) => <RecipeCard recipe={recipe} />)
+            )
+          ) : user.saves.length === 0 ? (
+            <div>No saves</div>
           ) : (
-            recipes
+            user.saves
               .slice(0, isSmallScreen ? 4 : 8)
               .map((recipe) => <RecipeCard recipe={recipe} />)
           )}

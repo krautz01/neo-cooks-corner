@@ -37,13 +37,12 @@ export default function LoginPage() {
   });
 
   const onSubmit = (data: ILoginFormValues) => {
-    console.log(data);
     dispatch(loginUser(data)).then((action) => {
       if (loginUser.fulfilled.match(action)) {
         navigate("/"); 
-        alert("Success");
+        console.log("Success");
       } else {
-        alert("Login failed");
+        console.log("Login failed");
       }
     });
   };

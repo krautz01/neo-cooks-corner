@@ -4,7 +4,7 @@ export interface IAuthState {
   isAuth: boolean;
   status: "loading" | "resolved" | "failed" | null;
   error: string | null;
-  user: Array<IUserData>;
+  user: IUserData | null;
 }
 
 export interface IUserData {
