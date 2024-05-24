@@ -3,18 +3,23 @@ import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "@redux/hooks";
 import { AppDispatch } from "@redux/store";
 import { logOut } from "@redux/reducers/authSlice/authSlice";
-import { useState } from "react";
+import React, { useState } from "react";
 import userPhoto from "@assets/images/user.png";
 import RecipeCard from "@components/RecipeCard/RecipeCard";
 import logout_icon from "@assets/icons/NavbarIcons/logout_icon.svg";
 import s from "./ProfilePage.module.scss";
+import ManageProfile from "@components/ModalWindows/ManageProfile/ManageProfile";
 
 const ProfilePage: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const user = useAppSelector((state) => state.auth.user);
-  const [category, setCategoty] = useState("");
+  const [category, setCategoty] = useState("my recipes");
   const isSmallScreen = window.innerWidth < 426;
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const handleLogOut = () => {
     navigate("/");
@@ -36,7 +41,11 @@ const ProfilePage: React.FC = () => {
         )}
       </div>
       <div className={s.user_block}>
-        <img src={userPhoto} alt="" className={s.user_photo} />
+        <img
+          src={user.photoLink || userPhoto}
+          alt=""
+          className={s.user_photo}
+        />
         <div className={s.user_raitings}>
           <div className={s.user_raiting}>
             <h2>{user.recipes.length}</h2>
@@ -58,9 +67,18 @@ const ProfilePage: React.FC = () => {
               {user.description || "No description"}
             </p>
           </div>
-          <button className={s.manage_button} type="button">
+          <button
+            className={s.manage_button}
+            type="button"
+            onClick={handleOpen}
+          >
             Manage Profile
           </button>
+          <ManageProfile
+            open={open}
+            handleClose={handleClose}
+            desc={user.description}
+          />
         </div>
       </div>
       <div className={s.user_recipes_block}>

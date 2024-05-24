@@ -9,17 +9,22 @@ import {
 } from "@redux/reducers/searchSlice/searchSlice";
 import { AppDispatch } from "@redux/store";
 import { Button } from "@ui/Button";
+import { IChef } from "@interfaces/iChef";
 import RecipeCard from "@components/RecipeCard/RecipeCard";
-import s from "./SearchPage.module.scss";
 import add_recipe_icon from "@assets/icons/add_recipe_icon.svg";
 import search_icon from "@assets/icons/search_icon.svg";
 import search_delete_icon from "@assets/icons/search_delete_icon.svg";
 import MobileSearchRecipeCard from "@components/MobileSearchRecipeCard/MobileSearchRecipeCard";
-import { IChef } from "@interfaces/iChef";
+import ChefCard from "@components/ChefCard/ChefCard";
+import CreateRecipe from "@components/ModalWindows/CreateRecipe/CreateRecipe";
+import s from "./SearchPage.module.scss";
 
 const SearchPage: React.FC = () => {
   const [category, setCategory] = useState("recipes");
   const [searchTerm, setSearchTerm] = useState("");
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   const IsSmallScreen = window.innerWidth <= 426;
 
   const dispatch = useDispatch<AppDispatch>();
@@ -109,8 +114,18 @@ const SearchPage: React.FC = () => {
                 )
               )
           )
+        ) : chefs.length === 0 ? (
+          <p>No results found</p>
         ) : (
-          chefs.slice(0, 8).map((chef) => <div>{chef.name}</div>)
+          chefs
+            .slice(0, 8)
+            .map((chef) => (
+              <ChefCard
+                chefPhoto={chef.photoLink}
+                name={chef.name}
+                key={chef.id}
+              />
+            ))
         )}
       </div>
       <div
@@ -125,10 +140,11 @@ const SearchPage: React.FC = () => {
             : { marginTop: "9%" }
         }
       >
-        <Button type="button">
+        <Button type="button" onClick={handleOpen}>
           <img src={add_recipe_icon} alt="" />
           Add your recipe
         </Button>
+        <CreateRecipe open={open} handleClose={handleClose} />
       </div>
     </div>
   );

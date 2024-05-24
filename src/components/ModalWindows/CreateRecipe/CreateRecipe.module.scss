@@ -1,0 +1,68 @@
+@import "@scss/App.scss";
+
+.create_recipe_form {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-family: "Poppins";
+  font-size: 1rem;
+  .form_top {
+    display: flex;
+    justify-content: flex-end;
+    h2 {
+      margin-right: 28%;
+    }
+  }
+  .form_inner_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .form_input_block {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      input {
+        height: 56px;
+        outline: none;
+        border: none;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        padding-left: 24px;
+        border-radius: 28px;
+        background: $Input-background;
+      }
+    }
+    .form_input_block_ingr {
+      display: flex;
+      input {
+        width: 40%;
+        height: 56px;
+        outline: none;
+        border: none;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        padding-left: 24px;
+        border-radius: 28px;
+        background: $Input-background;
+      }
+    }
+  }
+  .submit_button {
+    width: 100%;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 28px;
+    outline: none;
+    border: none;
+    background: $Text-faded;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 1rem;
+  }
+}
