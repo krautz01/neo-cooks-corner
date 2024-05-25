@@ -26,6 +26,8 @@ const ProfilePage: React.FC = () => {
     dispatch(logOut());
   };
 
+  
+
   if (!user) {
     return <div>Loading...</div>;
   }

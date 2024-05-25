@@ -3,8 +3,12 @@ import axios, { AxiosResponse } from "axios";
 
 const token = localStorage.getItem("token");
 
+if (!token) {
+  throw new Error("Token not found in localStorage");
+}
+
 const instance = axios.create({
-  baseURL: "http://165.227.147.154:8081/api/", // URL
+  baseURL: "http://165.227.147.154:8081/api",
   headers: {
     Accept: "*/*",
     "Content-Type": "application/json",
@@ -17,11 +21,11 @@ const addToLikes = (recipeId: number): Promise<AxiosResponse> => {
 };
 
 const addToSaves = (recipeId: number): Promise<AxiosResponse> => {
-  return instance.get(`/recipes/saved/remove/${recipeId}`);
+  return instance.get(`/recipes/saved/add/${recipeId}`);
 };
 
 const removeFromLikes = (recipeId: number): Promise<AxiosResponse> => {
-  return instance.get(`/recipes/likes/add/${recipeId}`);
+  return instance.get(`/recipes/likes/remove/${recipeId}`);
 };
 
 const removeFromSaves = (recipeId: number): Promise<AxiosResponse> => {
@@ -41,89 +45,40 @@ const createRecipe = (
   photo: File | null
 ): Promise<AxiosResponse> => {
   const formData = new FormData();
-  /* formData.append("recipeCreateDto", recipeCreateDto); */
+  formData.append("recipeCreateDto", JSON.stringify(recipeCreateDto));
   if (photo) {
     formData.append("photo", photo);
   }
-  return instance.post(
-    "http://165.227.147.154:8081/api/recipes/create",
-    formData,
-    {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    }
-  );
+  return instance.post("/recipes/create", formData, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "multipart/form-data",
+    },
+  });
 };
 
-/* const manageProfile = (
+const manageProfile = (
   name: string,
   description: string,
   photo: File | null
 ): Promise<AxiosResponse> => {
-  console.log(`${photo}, ${typeof photo}`);
   const formData = new FormData();
+  formData.append("name", name);
+  formData.append("description", description);
   if (photo) {
     formData.append("photo", photo);
   }
-  const encodedDescription = encodeURIComponent(description);
-  return instance.put(
-    `/users?name=${name}&description=${encodedDescription}`,
-    formData,
-    {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    }
-  );
-}; */
-
-function stringifyFormItem(formItem: unknown) {
-  if (typeof formItem === "object" && formItem !== null) {
-    return new Blob([JSON.stringify(formItem)], { type: "application/json" });
-  } else {
-    return `${formItem}`;
+  if (!token) {
+    return Promise.reject(new Error("Token not found in localStorage"));
   }
-}
 
-const changeProfile = async (
-  name: string,
-  description: string,
-  photo: File | null
-): Promise<void> => {
-  try {
-    const formData = new FormData();
-    if (photo) {
-      formData.append("photo", stringifyFormItem(photo));
-    } else {
-      console.log("Фото не предоставлено");
-    }
-    console.log(formData);
-    const response: AxiosResponse = await axios.put(
-      "http://165.227.147.154:8081/api/users",
-      formData,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
-        },
-        params: {
-          name,
-          description,
-        },
-      }
-    );
-    console.log(response);
-  } catch (error) {
-    if (axios.isAxiosError(error)) {
-      console.error(
-        "Error updating profile:",
-        error.response?.data || error.message
-      );
-    } else {
-      console.error("Unexpected error:", error);
-    }
-  }
+  return axios.post("http://165.227.147.154:8081/api/users", formData, {
+    headers: {
+      Accept: "*/*",
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "multipart/form-data",
+    },
+  });
 };
 
 export {
@@ -134,5 +89,5 @@ export {
   followOnAuthor,
   unFollowFromAuthor,
   createRecipe,
-  changeProfile,
+  manageProfile,
 };

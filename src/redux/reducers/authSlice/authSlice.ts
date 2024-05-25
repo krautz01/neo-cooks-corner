@@ -41,10 +41,28 @@ export const loginUser = createAsyncThunk(
   }
 );
 
+export const fetchUser = createAsyncThunk(
+  "user/fetchUser",
+  async function (token: string, { rejectWithValue }) {
+    try {
+      const response = await axios.get(
+        "http://165.227.147.154:8081/api/users/me",
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      return { user: response.data }; // action payload
+    } catch (error) {
+      return rejectWithValue("Failed to login user");
+    }
+  }
+);
+
 export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
+    setIsAuth: (state) => {
+      state.isAuth = true;
+    },
     logOut: (state) => {
       state.isAuth = false;
     },
@@ -59,7 +77,6 @@ export const authSlice = createSlice({
         state.status = "resolved";
         state.error = null;
         state.isAuth = true;
-        localStorage.removeItem("token");
         localStorage.setItem("token", action.payload.token);
         state.user = action.payload.user;
       })
@@ -75,7 +92,6 @@ export const authSlice = createSlice({
         state.status = "resolved";
         state.error = null;
         state.isAuth = true;
-        localStorage.removeItem("token");
         localStorage.setItem("token", action.payload.token);
         state.user = action.payload.user;
       })
@@ -83,9 +99,24 @@ export const authSlice = createSlice({
         state.status = "failed";
         state.error = action.payload as string;
         console.log(action.error.message);
+      })
+      .addCase(fetchUser.pending, (state) => {
+        state.status = "loading";
+        state.error = null;
+      })
+      .addCase(fetchUser.fulfilled, (state, action) => {
+        state.status = "resolved";
+        state.error = null;
+        state.user = action.payload.user;
+        state.isAuth = true;
+      })
+      .addCase(fetchUser.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload as string;
+        console.log(action.error.message);
       });
   },
 });
 
-export const { logOut } = authSlice.actions;
+export const { logOut, setIsAuth } = authSlice.actions;
 export default authSlice.reducer;

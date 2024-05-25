@@ -2,11 +2,10 @@ import { Box, Modal } from "@mui/material";
 import { Button } from "@ui/Button";
 import { Input } from "@ui/Input";
 import { useForm } from "react-hook-form";
-import { changeProfile } from "../../../api/api";
+import { manageProfile } from "../../../api/api";
 import React from "react";
 import modal_close_icon from "@assets/icons/modal_close_icon.svg";
 import s from "./ManageProfile.module.scss";
-import manageProfile from "../../../api/manageProfile";
 
 const style = {
   position: "absolute" as "absolute",
@@ -25,7 +24,7 @@ const style = {
 interface IProps {
   open: boolean;
   handleClose: () => void;
-  desc: string;
+  desc: string | null;
 }
 
 interface IManageProfile {
@@ -40,20 +39,14 @@ const ManageProfile: React.FC<IProps> = ({ open, handleClose, desc }) => {
     handleSubmit,
     formState: { errors },
   } = useForm<IManageProfile>();
-
-  const onSubmit = (data: IManageProfile) => {
+  const onSubmit = async (data: IManageProfile) => {
     try {
-      /* const response = await changeProfile(
-        data.name,
-        data.description,
-        data.photo ? data.photo[0] : null
-      ); */
-      const response = manageProfile(
+      const response = await manageProfile(
         data.name,
         data.description,
         data.photo ? data.photo[0] : null
       );
-      console.log(response);
+      alert(response);
       handleClose(); // Закрытие модального окна после успешного обновления
     } catch (error) {
       console.error("Error updating profile:", error);
