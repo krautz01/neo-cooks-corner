@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { logout } from "@redux/reducers/userSlice";
 import { useDispatch } from "react-redux";
+import { logOut } from "@redux/reducers/authSlice/authSlice";
 import React from "react";
 import s from "./Navbar.module.scss";
 import HomeLink from "@ui/NavbarLinks/HomeLink";
@@ -14,7 +14,7 @@ const Navbar: React.FC = () => {
   const dispatch = useDispatch();
 
   const handleLogOut = () => {
-    dispatch(logout());
+    dispatch(logOut());
     navigate("/");
   };
 
@@ -27,7 +27,11 @@ const Navbar: React.FC = () => {
         <HomeLink to={"/"} />
         <SearchLink to={"/search"} />
         <ProfileLink to={"/profile"} />
-        <button onClick={() => handleLogOut()} type="button" className={s.logout_button}>
+        <button
+          onClick={() => handleLogOut()}
+          type="button"
+          className={s.logout_button}
+        >
           <img
             src={logout_link}
             alt="logout_link"

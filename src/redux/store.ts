@@ -1,10 +1,11 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import userSlice from "./reducers/userSlice";
-import recipeSlice from "./reducers/recipeSlice";
-import searchSlice from "./reducers/searchSlice";
+import recipeSlice from "./reducers/recipeSlice/recipeSlice";
+import searchSlice from "./reducers/searchSlice/searchSlice";
+import authSlice from "./reducers/authSlice/authSlice";
 
 const rootReducer = combineReducers({
-  auth: userSlice,
+  auth: authSlice,
+  author: authSlice,
   recipes: recipeSlice,
   search: searchSlice,
 });

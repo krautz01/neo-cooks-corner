@@ -1,5 +1,10 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { useAppSelector } from "./redux/hooks";
+import { fetchUser } from "@redux/reducers/authSlice/authSlice";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@redux/store";
+import { useEffect } from "react";
+import { isTokenExpired } from "@utils/checkJWT";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import HomePage from "./pages/HomePage/HomePage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
@@ -14,6 +19,19 @@ import "./scss/App.scss";
 
 function App() {
   const isAuth = useAppSelector((state) => state.auth.isAuth);
+  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token != undefined) {
+      isTokenExpired(token)
+        ? localStorage.removeItem("token")
+        : dispatch(fetchUser(token));
+    } else {
+      navigate("/")
+    }
+  }, []);
 
   return (
     <>
@@ -26,7 +44,7 @@ function App() {
             <Routes>
               <Route path={"/"} element={<HomePage />} />
               <Route path={"/recipe/:id"} element={<DetailRecipePage />} />
-              <Route path={"/recipe/:id/author"} element={<AuthorPage />} />
+              <Route path={"/author/:id"} element={<AuthorPage />} />
               <Route path={"/search"} element={<SearchPage />} />
               <Route path={"/profile"} element={<ProfilePage />} />
               <Route path={"/not-found"} element={<NotFoundPage />} />

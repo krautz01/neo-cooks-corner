@@ -4,24 +4,19 @@ import { Input } from "@ui/Input.tsx";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
-import { login } from "@redux/reducers/userSlice";
-import * as yup from "yup";
+import { registerUser } from "@redux/reducers/authSlice/authSlice";
+import { AppDispatch } from "@redux/store";
+import { IRegisterFormValues } from "./interface";
 import React from "react";
+import * as yup from "yup";
 import s from "./RegisterPage.module.scss";
 import visible from "@assets/icons/visible_iconsvg.svg";
 import notvisible from "@assets/icons/notvisible_icon.svg";
 import email_icon from "@assets/icons/FormIcons/email_icon.svg";
-import user_icon from "@assets/icons/FormIcons/user_icon.svg"
-
-interface IFormValues {
-  username: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-}
+import user_icon from "@assets/icons/FormIcons/user_icon.svg";
 
 const schema = yup.object({
-  username: yup.string().required("Name is required"),
+  name: yup.string().required("Name is required"),
   email: yup.string().email("Invalid email").required("Email is required"),
   password: yup
     .string()
@@ -38,23 +33,28 @@ export default function RegisterPage() {
   const [confirmPasswordVisible, setConfirmPasswordVisible] =
     React.useState(false);
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IFormValues>({
+  } = useForm<IRegisterFormValues>({
     resolver: yupResolver(schema),
     mode: "onBlur",
   });
 
-  const onSubmit = (data: IFormValues) => {
-    console.log(data);
-    dispatch(login());
-    navigate("/");
-    // Отправка данных на сервер или выполнение других действий после отправки формы
+  const onSubmit = (data: IRegisterFormValues) => {
+    dispatch(registerUser(data)).then((action) => {
+      if (registerUser.fulfilled.match(action)) {
+        navigate("/login"); // Перенаправление при успешном входе
+        alert("Success");
+      } else {
+        console.error("Login failed", action.payload);
+        alert("Register failed");
+      }
+    });
   };
 
   return (
@@ -68,19 +68,19 @@ export default function RegisterPage() {
       <div className={s.register_form_wrapper}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className={s.input_block}>
-            <label htmlFor="username">Name</label>
+            <label htmlFor="name">Name</label>
             <div className={s.input_wrapper}>
               <Input
                 type="text"
-                id="username"
-                {...register("username")}
+                id="name"
+                {...register("name")}
                 placeholder="Enter yout name"
               />
               <button type="button">
                 <img src={user_icon} alt="user_icon" />
               </button>
             </div>
-            <p className={s.valid_error}>{errors.username?.message}</p>
+            <p className={s.valid_error}>{errors.name?.message}</p>
           </div>
           <div className={s.input_block}>
             <label htmlFor="email">Gmail</label>
@@ -119,7 +119,7 @@ export default function RegisterPage() {
             <label htmlFor="password">Re-Password</label>
             <div className={s.input_wrapper}>
               <Input
-                type={passwordVisible ? "text" : "password"}
+                type={confirmPasswordVisible ? "text" : "password"}
                 id="confirmPassword"
                 placeholder="Re-Enter yout Password"
                 {...register("confirmPassword")}

@@ -1,0 +1,231 @@
+@import "@scss/App.scss";
+
+.create_recipe_form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-family: "Poppins";
+  font-size: 1rem;
+  .form_top {
+    display: flex;
+    justify-content: flex-end;
+    h2 {
+      margin-right: 28%;
+    }
+  }
+  .form_inner_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    label {
+      color: $Text-faded;
+    }
+    .error_message {
+      font-family: "Poppins";
+      color: red;
+    }
+
+    .form_inner_wrapper_top {
+      /*  width: 100%; */
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 1rem;
+      .form_input_block_photo,
+      .form_input_block_title,
+      .form_input_block_desc {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        input {
+          outline: none;
+          border: none;
+          font-size: 1rem;
+          display: flex;
+          align-items: center;
+          padding-left: 24px;
+          border-radius: 28px;
+        }
+      }
+      .form_input_block_photo {
+        grid-column: 1;
+        grid-row: 1/3;
+        input {
+          border-radius: 2.5rem;
+          width: 100%;
+          height: 100%;
+          background: $Input-background;
+        }
+      }
+      .form_input_block_title {
+        grid-column: 2;
+        grid-row: 1;
+        input {
+          height: 56px;
+          border: 1px solid $Primary;
+        }
+      }
+      .form_input_block_desc {
+        grid-column: span 2;
+        grid-row: 2;
+        input {
+          height: 56px;
+          background: $Input-background;
+        }
+      }
+    }
+    .form_input_block {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      input {
+        height: 56px;
+        outline: none;
+        border: none;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        padding-left: 24px;
+        border-radius: 28px;
+        background: $Input-background;
+      }
+      select {
+        height: 56px;
+        border-radius: 28px;
+        display: flex;
+        align-items: center;
+        padding-left: 24px;
+        background: $Input-background;
+        font-size: 1rem;
+        color: $Text-faded;
+        border: none;
+        outline: none;
+        option {
+          width: 50%;
+        }
+      }
+    }
+    .form_input_block_ingr {
+      display: flex;
+      flex-direction: column;
+      .error_message {
+        color: red;
+      }
+      .ingredient_item {
+        display: flex;
+        justify-content: space-between;
+        .ingredient_item_title {
+          width: 47%;
+          height: 56px;
+          outline: none;
+          border: none;
+          font-size: 1rem;
+          display: flex;
+          align-items: center;
+          padding-left: 24px;
+          border-radius: 28px;
+          background: $Input-background;
+        }
+        .ingredient_quantity_wrapper {
+          width: 33%;
+          height: 56px;
+          display: flex;
+          border-radius: 1rem;
+          background: $Input-background;
+          .ingredient_item_quantity {
+            background: $Input-background;
+            width: 70%;
+            outline: none;
+            border: none;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            padding-left: 24px;
+            border-radius: 1rem;
+          }
+          select {
+            font-size: 1rem;
+            font-family: "Poppins";
+            border-radius: 1rem;
+            background: $Input-background;
+            border: none;
+            outline: none;
+            color: $Text-faded;
+            text-align: center;
+            option {
+              font-size: 1rem;
+              font-family: "Poppins";
+              border-radius: 1rem;
+              width: 9rem;
+            }
+          }
+        }
+        .ingredient_item_action_button {
+          width: auto;
+          height: auto;
+          margin-left: 0;
+          background: none;
+          border: none;
+          outline: none;
+        }
+      }
+    }
+    .form_difficulty_block {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      .difficulty_buttons {
+        display: flex;
+        gap: 6px;
+        .difficulty {
+          font-size: 1rem;
+          width: 20%;
+          height: 56px;
+          border: none;
+          outline: none;
+          padding: 8px, 24px, 8px, 24px;
+          color: #343434;
+          background: $Input-background;
+          border-radius: 28px;
+        }
+        .difficulty_active {
+          font-size: 1rem;
+          width: 30%;
+          border-radius: 28px;
+          color: #ffffff;
+          height: 56px;
+          background: $Primary;
+          border: none;
+          outline: none;
+        }
+      }
+    }
+  }
+  .submit_button {
+    width: 100%;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 28px;
+    outline: none;
+    border: none;
+    background: $Text-faded;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 1rem;
+    margin-top: auto;
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (width < 1025px) {
+  .create_recipe_form{
+    .form_inner_wrapper{
+      .form_inner_wrapper_top{
+
+      }
+    }
+  }
+}

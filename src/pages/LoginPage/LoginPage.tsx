@@ -4,8 +4,10 @@ import { Button } from "@ui/Button";
 import { Input } from "@ui/Input";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { loginUser } from "@redux/reducers/authSlice/authSlice";
 import { useDispatch } from "react-redux";
-import { login } from "@redux/reducers/userSlice";
+import { AppDispatch } from "@redux/store";
+import { ILoginFormValues } from "./interface";
 import * as yup from "yup";
 import s from "./LoginPage.module.scss";
 import visible from "@assets/icons/visible_iconsvg.svg";
@@ -13,15 +15,10 @@ import notvisible from "@assets/icons/notvisible_icon.svg";
 import email_icon from "@assets/icons/FormIcons/email_icon.svg";
 
 export default function LoginPage() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
   const [passwordVisible, setPasswordVisible] = React.useState(false);
-
-  interface IFormValues {
-    email: string;
-    password: string;
-  }
 
   const schema = yup.object({
     email: yup.string().email("Invalid email").required("Email is required"),
@@ -35,14 +32,19 @@ export default function LoginPage() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IFormValues>({
+  } = useForm<ILoginFormValues>({
     resolver: yupResolver(schema),
   });
-  const onSubmit = (data: IFormValues) => {
-    console.log(data);
-    dispatch(login());
-    navigate("/");
-    // Отправка данных на сервер или выполнение других действий после отправки формы
+
+  const onSubmit = (data: ILoginFormValues) => {
+    dispatch(loginUser(data)).then((action) => {
+      if (loginUser.fulfilled.match(action)) {
+        navigate("/"); 
+        console.log("Success");
+      } else {
+        console.log("Login failed");
+      }
+    });
   };
   return (
     <div className={s.login_page}>

@@ -2,11 +2,12 @@ import styled from "styled-components";
 
 interface ButtonProps {
   type: string;
-  onClick?: void;
+  onClick?: ()=>void;
 }
 
 export const Button = styled.button<ButtonProps>`
   width: 100%;
+  height: 100%;
   border-radius: 1.75rem;
   border: none;
   background: #fa9e31;

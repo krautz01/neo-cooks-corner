@@ -9,7 +9,7 @@
   padding: 2.5rem 2rem 3.5rem 2rem;
   text-align: center;
   .search_types {
-    width: 30%;
+    width: 39%;
     height: 5rem;
     border-radius: 2rem;
     display: flex;
@@ -17,6 +17,15 @@
     justify-content: space-around;
     background: $Secondary;
     .search_type_button {
+      width: 10rem;
+      padding: 4px 48px 4px 48px;
+      border-radius: 22px;
+      border: none;
+      background: none;
+      color: #343434;
+    }
+    .search_type_button_active {
+      background: $Primary;
       width: 10rem;
       padding: 4px 48px 4px 48px;
       border-radius: 22px;
@@ -54,9 +63,11 @@
   .add_recipe_button {
     width: 30rem;
     display: flex;
-    align-items: center;
+    margin-top: auto;
+    margin-bottom: 0;
     button {
       color: #ffffff;
+      text-align: center;
       gap: 1rem;
       flex-direction: row;
       justify-content: center;
