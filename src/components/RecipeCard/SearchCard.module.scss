@@ -5,6 +5,7 @@
   padding: 0.7rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
   .recipe_photo {
+    border-radius: 1rem;
     width: 100%;
     height: 62%;
     max-width: 100%;
@@ -26,6 +27,7 @@
     }
     .recipe_author {
       font-size: (12/16) * 1rem;
+      color: #343434;
     }
     .recipe_card_raitings {
       display: flex;

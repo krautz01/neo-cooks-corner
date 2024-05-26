@@ -1,19 +1,17 @@
 import { useDispatch } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useAppSelector } from "@redux/hooks";
 import { AppDispatch } from "@redux/store";
-import { logOut } from "@redux/reducers/authSlice/authSlice";
 import React, { useEffect } from "react";
 import userPhoto from "@assets/images/user.png";
 import RecipeCard from "@components/RecipeCard/RecipeCard";
-import logout_icon from "@assets/icons/NavbarIcons/logout_icon.svg";
 import s from "./AuthorPage.module.scss";
 import { fetchAuthor } from "@redux/reducers/authorSlice/authorSlice";
 import { followOnAuthor } from "../../api/api";
+import back_button from "@assets/icons/back_button.svg";
 
 const AuthorPage: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const navigate = useNavigate();
   const user = useAppSelector((state) => state.author.user);
   const { id } = useParams();
   const isSmallScreen = window.innerWidth < 426;
@@ -21,24 +19,16 @@ const AuthorPage: React.FC = () => {
     dispatch(fetchAuthor(id));
   }, []);
 
-  const handleLogOut = () => {
-    navigate("/");
-    dispatch(logOut());
-  };
-
   if (!user) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div className={s.profile_page}>
-      <div className={s.profile_page_top}>
-        <h2>Profile</h2>
-        {isSmallScreen ? (
-          <img src={logout_icon} alt="logout" onClick={() => handleLogOut()} />
-        ) : (
-          ""
-        )}
+    <div className={s.author_page}>
+      <div className={s.author_page_top}>
+        <Link to={"/"} className={s.back_button}>
+          <img src={back_button} alt="" />
+        </Link>
       </div>
       <div className={s.user_block}>
         <img

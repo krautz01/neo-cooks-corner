@@ -126,6 +126,7 @@ const SearchPage: React.FC = () => {
                 chefPhoto={chef.photoLink}
                 name={chef.name}
                 key={chef.id}
+                chefId={chef.id}
               />
             ))
         )}

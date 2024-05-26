@@ -1,0 +1,30 @@
+.card {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+  .image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+  }
+}
+
+.card_mobile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  .image {
+    width: 40px;
+    height: 40px;
+    border-radius: 0.5rem;
+  }
+  .link{
+    margin-right: 0;
+    margin-left: auto;
+  }
+}
