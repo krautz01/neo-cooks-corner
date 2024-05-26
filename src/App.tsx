@@ -1,5 +1,10 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { useAppSelector } from "./redux/hooks";
+import { fetchUser } from "@redux/reducers/authSlice/authSlice";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@redux/store";
+import { useEffect } from "react";
+import { isTokenExpired } from "@utils/checkJWT";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import HomePage from "./pages/HomePage/HomePage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
@@ -11,20 +16,11 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import GreetingPage from "./pages/GreetingPage/GreetingPage";
 import Navbar from "./components/Navbar/Navbar";
 import "./scss/App.scss";
-/* import { isTokenExpired } from "@utils/checkJWT"; */
-import { fetchUser, setIsAuth } from "@redux/reducers/authSlice/authSlice";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "@redux/store";
-import { useEffect } from "react";
-
-const isTokenExpired = (token: string) => {
-  const expiry = JSON.parse(atob(token.split(".")[1])).exp;
-  return Math.floor(new Date().getTime() / 1000) >= expiry;
-};
 
 function App() {
   const isAuth = useAppSelector((state) => state.auth.isAuth);
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -32,6 +28,8 @@ function App() {
       isTokenExpired(token)
         ? localStorage.removeItem("token")
         : dispatch(fetchUser(token));
+    } else {
+      navigate("/")
     }
   }, []);
 

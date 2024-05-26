@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { IRecipe } from "@interfaces/IRecipe";
+import { addToLikes, addToSaves } from "../../api/api";
 import a from "./RecipeCard.module.scss";
 import b from "./SearchCard.module.scss";
 import zozo from "@assets/images/zozo.png";
@@ -17,11 +18,10 @@ const RecipeCard: React.FC<IRecipeCardProps> = ({
   recipe,
   isSearchRecipeCard,
 }) => {
+
   const s = isSearchRecipeCard ? b : a;
   const like = isSearchRecipeCard ? like_icon_black : like_icon_white;
   const save = isSearchRecipeCard ? saved_icon_black : saved_icon_white;
-
-  const handleSetToLikes = () => {};
 
   return (
     <div className={s.recipe_card}>
@@ -38,11 +38,11 @@ const RecipeCard: React.FC<IRecipeCardProps> = ({
         </Link>
         <div className={s.recipe_card_raitings}>
           <p>
-            <img src={like} alt="like" onClick={() => handleSetToLikes()} />
+            <img src={like} alt="like" onClick={() => addToLikes(recipe.id)} />
             {recipe.likesCount}
           </p>
           <p>
-            <img src={save} alt="save" />
+            <img src={save} alt="save" onClick={() => addToSaves(recipe.id)} />
             {recipe.savesCount}
           </p>
         </div>

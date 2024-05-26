@@ -1,17 +1,15 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useDebounce } from "@hooks/useDebounce";
 import { SearchInput } from "@ui/SearchInput";
-import { IRecipe } from "@interfaces/IRecipe";
+import { AppDispatch } from "@redux/store";
+import { useAppSelector } from "@redux/hooks";
 import {
   searchChefs,
   searchRecipes,
 } from "@redux/reducers/searchSlice/searchSlice";
-import { AppDispatch } from "@redux/store";
 import { Button } from "@ui/Button";
-import { IChef } from "@interfaces/iChef";
-import RecipeCard from "@components/RecipeCard/RecipeCard";
-import add_recipe_icon from "@assets/icons/add_recipe_icon.svg";
+import RecipeCard from "@components/RecipeCard/RecipeCard"
 import search_icon from "@assets/icons/search_icon.svg";
 import search_delete_icon from "@assets/icons/search_delete_icon.svg";
 import MobileSearchRecipeCard from "@components/MobileSearchRecipeCard/MobileSearchRecipeCard";
@@ -28,12 +26,8 @@ const SearchPage: React.FC = () => {
   const IsSmallScreen = window.innerWidth <= 426;
 
   const dispatch = useDispatch<AppDispatch>();
-  const recipes = useSelector(
-    (state: { search: { recipes: IRecipe[] } }) => state.search.recipes
-  );
-  const chefs = useSelector(
-    (state: { search: { chefs: IChef[] } }) => state.search.chefs
-  );
+  const recipes = useAppSelector((state) => state.search.recipes);
+  const chefs = useAppSelector((state) => state.search.chefs);
 
   const debouncedSearch = useDebounce((search: string) => {
     if (category === "recipes") {
@@ -56,14 +50,22 @@ const SearchPage: React.FC = () => {
       <div className={s.search_types}>
         <button
           type="button"
-          className={category === "chefs" ? s.search_type_button : ""}
+          className={
+            category === "chefs"
+              ? s.search_type_button_active
+              : s.search_type_button
+          }
           onClick={() => setCategory("chefs")}
         >
           Chefs
         </button>
         <button
           type="button"
-          className={category === "recipes" ? s.search_type_button : ""}
+          className={
+            category === "recipes"
+              ? s.search_type_button_active
+              : s.search_type_button
+          }
           onClick={() => setCategory("recipes")}
         >
           Recipes
@@ -128,20 +130,8 @@ const SearchPage: React.FC = () => {
             ))
         )}
       </div>
-      <div
-        className={s.add_recipe_button}
-        style={
-          IsSmallScreen
-            ? recipes.length === 0
-              ? { marginTop: "118%" }
-              : {}
-            : recipes.length === 0
-            ? { marginTop: "48.5%" }
-            : { marginTop: "9%" }
-        }
-      >
+      <div className={s.add_recipe_button}>
         <Button type="button" onClick={handleOpen}>
-          <img src={add_recipe_icon} alt="" />
           Add your recipe
         </Button>
         <CreateRecipe open={open} handleClose={handleClose} />

@@ -5,6 +5,7 @@ import authSlice from "./reducers/authSlice/authSlice";
 
 const rootReducer = combineReducers({
   auth: authSlice,
+  author: authSlice,
   recipes: recipeSlice,
   search: searchSlice,
 });

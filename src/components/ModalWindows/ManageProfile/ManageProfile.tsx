@@ -46,7 +46,7 @@ const ManageProfile: React.FC<IProps> = ({ open, handleClose, desc }) => {
         data.description,
         data.photo ? data.photo[0] : null
       );
-      alert(response);
+      console.log(response);
       handleClose(); // Закрытие модального окна после успешного обновления
     } catch (error) {
       console.error("Error updating profile:", error);
@@ -75,7 +75,7 @@ const ManageProfile: React.FC<IProps> = ({ open, handleClose, desc }) => {
             <p className={s.valid_error}>{errors.name?.message}</p>
           </div>
           <div className={s.input_block_bio}>
-            <label htmlFor="description">Change your photo</label>
+            <label htmlFor="description">Change your description</label>
             <Input
               id="description"
               type="text"
@@ -92,10 +92,6 @@ const ManageProfile: React.FC<IProps> = ({ open, handleClose, desc }) => {
               accept="image/png"
               placeholder="Upload a new photo"
               {...register("photo")}
-              /* onChange={(e) => {
-                const file = e.target.files?.[0] || null;
-                setValue("photo", file);
-              }} */
             />
             <p className={s.valid_error}>{errors.photo?.message}</p>
           </div>
