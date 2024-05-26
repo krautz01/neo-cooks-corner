@@ -12,8 +12,9 @@ const instance = axios.create({
 });
 
 const addToLikes = (recipeId: number): Promise<AxiosResponse> => {
-  
-  return instance.get(`/recipes/likes/add/${recipeId}`);
+  const response = instance.get(`/recipes/likes/add/${recipeId}`);
+  console.log(response);
+  return response;
 };
 
 const addToSaves = (recipeId: number): Promise<AxiosResponse> => {
@@ -57,10 +58,13 @@ const createRecipe = (
 ): Promise<AxiosResponse> => {
   const formData = new FormData();
   console.log(recipeCreateDto);
-  formData.append("recipeCreateDto", JSON.stringify(recipeCreateDto));
+  formData.append(
+    "recipeCreateDto",
+    new Blob([JSON.stringify(recipeCreateDto)], { type: "application/json" })
+  );
   if (photo) {
-    formData.append("photo", photo);
-    console.log(photo)
+    formData.append("photo", photo, photo.name);
+    console.log(photo);
   }
   console.log(formData);
   return axios.post(
@@ -107,36 +111,3 @@ export {
   createRecipe,
   manageProfile,
 };
-
-/* const h = {
-  title: "French Omelette",
-  description:
-    "A Classic French Omelette is a simple yet refined dish that embodies the elegance and precision of French cuisine. It is known for its smooth, tender, and slightly runny interior, contrasting with a pale, barely browned exterior",
-  ingredientsList: [
-    { name: "Eggs", quantity: "3 pieces" },
-    { name: "Butter", quantity: "1 pieces" },
-    { name: "Salt", quantity: "  to taste" },
-    { name: "Pepper", quantity: "  to taste" },
-    { name: "Chopped herbs (optional)", quantity: "1 pieces" },
-  ],
-  difficulty: "Easy",
-  category: "breakfast",
-  youtubeLink: "https://youtu.be/_Wb5Crj917I?si=XX5dkPhSr9Vpf-IB",
-  preparationTime: "5-7min",
-};
-
-const d = {
-  title: "Chicken ",
-  description:
-    "You pick up your palette knife and then work that into. Give...",
-  ingredientsList: [
-    {
-      name: "Chicken",
-      quantity: "1 kg",
-    },
-  ],
-  difficulty: "EASY",
-  category: "BREAKFAST",
-  youtubeLink: "youtube_url",
-  preparationTime: "20-30 min",
-}; */

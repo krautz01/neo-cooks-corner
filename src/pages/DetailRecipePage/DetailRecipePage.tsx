@@ -4,7 +4,12 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@redux/store";
 import { fetchRecipesById } from "@redux/reducers/recipeSlice/recipeSlice";
 import { useAppSelector } from "@redux/hooks";
-import { addToLikes, addToSaves } from "../../api/api";
+/* import {
+  addToLikes,
+  addToSaves,
+  removeFromLikes,
+  removeFromSaves,
+} from "../../api/api"; */
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import s from "./DetailRecipePage.module.scss";
 import zozo from "@assets/images/recipe_photo.png";
@@ -17,26 +22,45 @@ export default function DetailRecipePage() {
   const { id } = useParams();
   const dispatch = useDispatch<AppDispatch>();
   const recipeById = useAppSelector((state) => state.recipes.recipeById);
-  /*  const [detailRecipe, setDetailRecipe] = useState<IRecipe | null>(null); */
 
   useEffect(() => {
-    /* const foundRecipe = recipes.find(
-      (recipe: IRecipe) => String(recipe.id) === id
-    );
-    setDetailRecipe(foundRecipe || null); */
     dispatch(fetchRecipesById(id));
   }, []);
+
+  const handleAddOrRemoveLike = async (id: number) => {
+    /* try {
+      const response = await addToLikes(id);
+      if (response.data.message === "Recipe already added to like") {
+        await removeFromLikes(id);
+      }
+    } catch (error) {
+      console.error(error);
+    } */
+    console.log(id);
+  };
+
+  const handleAddOrRemoveSaves = async (id: number) => {
+    /*   try {
+      const response = await addToSaves(id);
+      if (response.data.message === "Recipe already added to like") {
+        await removeFromSaves(id);
+      }
+    } catch (error) {
+      console.error(error);
+    } */
+    console.log(id);
+  };
   return (
     <>
       {recipeById ? (
         <div className={s.recipe_page}>
           <Link to={"/"} className={s.back_button}>
-            <img src={back_button} alt="" />
+            <img src={back_button} alt="back" />
           </Link>
           <img
             className={s.recipe_photo}
             src={recipeById.photo || zozo}
-            alt=""
+            alt="recipe"
           />
           <div className={s.recipe_content_wrapper}>
             <div className={s.recipe_author_block}>
@@ -47,7 +71,8 @@ export default function DetailRecipePage() {
             </div>
             <div className={s.recipe_cooking}>
               <div className={s.recipe_cooking_time}>
-                <img src={clock} alt="" /> <p>{recipeById.preparationTime}</p>
+                <img src={clock} alt="clock" />
+                <p>{recipeById.preparationTime}</p>
               </div>
               <div className={s.recipe_cooking_level}>
                 {recipeById.difficulty}
@@ -57,16 +82,16 @@ export default function DetailRecipePage() {
               <div className={s.recipe_raiting_likes}>
                 <img
                   src={like_icon}
-                  alt=""
-                  onClick={() => addToLikes(recipeById.id)}
+                  alt="like"
+                  onClick={() => handleAddOrRemoveLike(recipeById.id)}
                 />
                 {recipeById.likesCount} likes
               </div>
               <div>
                 <img
                   src={saving_icon}
-                  alt=""
-                  onClick={() => addToSaves(recipeById.id)}
+                  alt="save"
+                  onClick={() => handleAddOrRemoveSaves(recipeById.id)}
                 />
                 {recipeById.savesCount} saves
               </div>
@@ -75,19 +100,19 @@ export default function DetailRecipePage() {
               <h3>Description</h3>
               <p>
                 You pick up your palette knife and then work that into. Give
-                your meat a good old rub. That’s it, nice and hot, hot and spicy
+                your meat a good old rub. That's it, nice and hot, hot and spicy
                 meat.{" "}
                 <a href={recipeById.youtubeLink} target="_blank">
                   He-he boy...
                 </a>
                 You pick up your palette knife and then work that into. Give
-                your meat a good old rub. That’s it, nice and hot, hot and spicy
+                your meat a good old rub. That's it, nice and hot, hot and spicy
                 meat.{" "}
                 <a href={recipeById.youtubeLink} target="_blank">
                   He-he boy...
                 </a>
                 You pick up your palette knife and then work that into. Give
-                your meat a good old rub. That’s it, nice and hot, hot and spicy
+                your meat a good old rub. That's it, nice and hot, hot and spicy
                 meat.
                 <a href={recipeById.youtubeLink} target="_blank">
                   He-he boy...

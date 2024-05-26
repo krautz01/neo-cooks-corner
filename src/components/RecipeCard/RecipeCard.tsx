@@ -9,6 +9,7 @@ import like_icon_white from "@assets/icons/RecipeIcons/white/like_icon.svg";
 import saved_icon_white from "@assets/icons/RecipeIcons/white/saved_icon.svg";
 import like_icon_black from "@assets/icons/RecipeIcons/black/like_icon.svg";
 import saved_icon_black from "@assets/icons/RecipeIcons/black/saved_icon.svg";
+/* import { useAppSelector } from "@redux/hooks"; */
 
 interface IRecipeCardProps {
   recipe: IRecipe;
@@ -18,10 +19,35 @@ const RecipeCard: React.FC<IRecipeCardProps> = ({
   recipe,
   isSearchRecipeCard,
 }) => {
-
+  /*   const saves = useAppSelector((state) => state.auth.user?.saves); */
   const s = isSearchRecipeCard ? b : a;
   const like = isSearchRecipeCard ? like_icon_black : like_icon_white;
   const save = isSearchRecipeCard ? saved_icon_black : saved_icon_white;
+
+  /*  const isRecipeInSaves = (id: number) => {
+    const d = saves && saves.some((save) => save.id === id);
+    console.log(d);
+    return saves && saves.some((save) => save.id === id);
+  }; */
+  const handleAddOrRemoveLike = (id: number) => {
+    addToLikes(id);
+    /* try {
+    } catch (error) {
+      console.error(error);
+      removeFromSaves(id);
+    } */
+  };
+
+  const handleAddOrRemoveSaves = async (id: number) => {
+    addToSaves(id);
+    /*  try {
+      if (response.data.message === "Recipe already added to like") {
+        await removeFromSaves(id);
+      }
+    } catch (error) {
+      console.error(error);
+    } */
+  };
 
   return (
     <div className={s.recipe_card}>
@@ -38,11 +64,19 @@ const RecipeCard: React.FC<IRecipeCardProps> = ({
         </Link>
         <div className={s.recipe_card_raitings}>
           <p>
-            <img src={like} alt="like" onClick={() => addToLikes(recipe.id)} />
+            <img
+              src={like}
+              alt="like"
+              onClick={() => handleAddOrRemoveLike(recipe.id)}
+            />
             {recipe.likesCount}
           </p>
           <p>
-            <img src={save} alt="save" onClick={() => addToSaves(recipe.id)} />
+            <img
+              src={save}
+              alt="save"
+              onClick={() => handleAddOrRemoveSaves(recipe.id)}
+            />
             {recipe.savesCount}
           </p>
         </div>
